@@ -21,7 +21,7 @@ hr {
   }
 
   .main {
-    background-image: url("/assets/img/nature.jpg");
+    background-image: url("nature.jpg");
   }
 
   .quote {
