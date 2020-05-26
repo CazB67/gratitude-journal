@@ -1,5 +1,5 @@
 $("#login-button").click(function() {
-    $(".modal").addClass("is-active");  
+    $(".login").addClass("is-active");  
   });
   
   $(".modal-close").click(function() {
@@ -11,5 +11,5 @@ $("#login-button").click(function() {
  });
 
  $("#signup-button").click(function() {
-    $(".modal").addClass("is-active");  
+    $(".signup").addClass("is-active");  
   });
