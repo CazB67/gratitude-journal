@@ -8,8 +8,28 @@ hr {
     border-width: 1px;
   } 
   
-  h1 {
+  h1, .title {
     font-family: 'Pacifico', cursive;
     font-size: 3em;
     font-stretch: expanded;
+  }
+
+  .message-body {
+    margin-top: 1em;
+  }
+
+  .main {
+    background-image: url("/public/assets/img/nature.jpg");
+  }
+
+  .quote {
+    margin-top: 2em;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .quote-author {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1em;
   }
