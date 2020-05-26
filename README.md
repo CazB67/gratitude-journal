@@ -2,21 +2,21 @@
 
 ## Description 
 ![Last Commit](https://img.shields.io/github/last-commit/cazb67/gratitude-journal) ![Top Language](https://img.shields.io/github/languages/top/cazb67/gratitude-journal) ![GitHub repo size](https://img.shields.io/github/repo-size/cazb67/gratitude-journal)
+
 To create a full stack application where users can log gratitudes, be presented with inspiring quotes and log random acts of kindness. Gratitude is the ability to pay attention to what you have, instead of worrying about what you don't have. In the book 'The Resilience Project' by Hugh Van Cuylenburg he writes about finding happiness through gratitude, empathy and mindfulness. By simply writing down our gratitudes daily we can become happier individuals. Van Cuylenburg describes the neuroscience behind kindness explaining that 'when you do something kind for someone else, your brain releases oxytocin' and this hormone 'allows us to feel joy, happiness and love'(p.73). The acts of kindness need not be extravagent, eg a phone call or opening a door for someone. There are many print gratitude journals in the market, this app offers an easily accessible and easy to use alternative.
 
 ## Table of Contents
 1. [User Story](#User-Story)
 2. [Acceptance Criteria](#Acceptance-Criteria)
 3. [Wireframe](#Wireframe)
-4. [Wireframe](#Wireframe)
-5. [Installation](#Installation)
-6. [Usage](#Usage)
-7. [Technologies](#Technologies)
-8. [Rough Breakdown of Tasks ](#Rough-Breakdown-of-Tasks)
-9. [Bonus Features ](#Bonus-Features)
-10. [Credits](#Credits)
-11. [Contributing](#Contributing)
-12. [Licence](#License)
+4. [Installation](#Installation)
+5. [Usage](#Usage)
+6. [Technologies](#Technologies)
+7. [Rough Breakdown of Tasks ](#Rough-Breakdown-of-Tasks)
+8. [Bonus Features ](#Bonus-Features)
+9. [Credits](#Credits)
+10. [Contributing](#Contributing)
+11. [Licence](#License)
 
 ## User Story
 ```
