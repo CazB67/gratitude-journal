@@ -8,15 +8,14 @@ To create a full stack application where users can log gratitudes, be presented 
 1. [User Story](#User-Story)
 2. [Acceptance Criteria](#Acceptance-Criteria)
 3. [Wireframe](#Wireframe)
-4. [Wireframe](#Wireframe)
-5. [Installation](#Installation)
-6. [Usage](#Usage)
-7. [Technologies](#Technologies)
-8. [Rough Breakdown of Tasks ](#Rough-Breakdown-of-Tasks)
-9. [Bonus Features ](#Bonus-Features)
-10. [Credits](#Credits)
-11. [Contributing](#Contributing)
-12. [Licence](#License)
+4. [Installation](#Installation)
+5. [Usage](#Usage)
+6. [Technologies](#Technologies)
+7. [Rough Breakdown of Tasks ](#Rough-Breakdown-of-Tasks)
+8. [Bonus Features ](#Bonus-Features)
+9. [Credits](#Credits)
+10. [Contributing](#Contributing)
+11. [Licence](#License)
 
 ## User Story
 ```
