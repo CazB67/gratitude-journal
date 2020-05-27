@@ -1,29 +1,19 @@
-hr { 
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-  } 
-  
-  h1, .title {
+
+  h1, .title, .subtitle {
     font-family: 'Pacifico', cursive;
-    font-size: 3em;
     font-stretch: expanded;
     margin-bottom: 0.2em;
     margin-left: 0.3em;
+    font-weight: lighter;
   }
 
-  .message-body {
-    margin-top: 1em;
-  }
-
-  .main {
+  .main  {
     background-image: url("/assets/img/nature.jpg");
   }
 
+  .background{
+    background-color:whitesmoke;
+  }
   .quote {
     margin-top: 2em;
     text-align: center;
@@ -37,6 +27,10 @@ hr {
   }
 
   .field {
-    padding: 0.5em;
+    padding: 0.4em;
+  }
+
+  .label, .checkbox, .text {
+    font-family: Arial, Helvetica, sans-serif;
   }
 
