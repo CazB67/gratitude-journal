@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = function (sequelize, DataTypes) {
   const Gratitude = sequelize.define("Gratitude", {
     gratitudeId: {
