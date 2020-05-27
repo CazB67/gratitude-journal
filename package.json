@@ -4,7 +4,7 @@
   "description": "gratitude",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": " eslint --ext .js models/"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/CazB67/project2#readme",
   "dependencies": {
+    "bulma": "^0.8.2",
+    "bulma-calendar": "^6.0.7",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.17.1",
