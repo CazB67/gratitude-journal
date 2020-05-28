@@ -11,8 +11,12 @@
     background-image: url("/assets/img/nature.jpg");
   }
 
-  .background{
+  .background {
     background-color:whitesmoke;
+  }
+
+  .footer{
+    background-color: hsl(204, 86%, 53%);
   }
   .quote {
     margin-top: 2em;
@@ -30,7 +34,5 @@
     padding: 0.4em;
   }
 
-  .label, .checkbox, .text {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  
 
