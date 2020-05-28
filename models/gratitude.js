@@ -2,10 +2,10 @@
 module.exports = function (sequelize, DataTypes) {
   const Gratitude = sequelize.define("Gratitude", {
     gratitudeId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
     },
     gratitude: {
       type: DataTypes.STRING,
@@ -19,12 +19,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    userId: {
-      references: {
-        model: User,
-        key: 'userId',
-      },
-    }
   });
+
+  Gratitude.associate = function (models){
+    Gratitude.belongsTo(models.User, {
+      foreignKey: "userId"
+    });
+  }
   return Gratitude;
 };
