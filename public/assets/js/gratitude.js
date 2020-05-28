@@ -24,28 +24,31 @@ $("#signup-button").click(function() {
 const gratitudeForm = $("#save-button");
 const gratitudeInput = $("#gratitude-input");
 const actionInput = $("#action-input");
-
+const shareGratitudes = $("#checkbox");
 //On click function to get input
 gratitudeForm.on("click", function(event) {
     event.preventDefault();
     let gratitudeData = {
        gratitude: gratitudeInput.val().trim(),
-       action: actionInput.val().trim()
+       action: actionInput.val().trim(),
+       public: shareGratitudes.prop("checked")
+
     };
     if(!gratitudeData.gratitude || !gratitudeData.action){
        return
     }else{
-       saveGratitude(gratitudeData.gratitude, gratitudeData.action);
+       saveGratitude(gratitudeData.gratitude, gratitudeData.action, gratitudeData.public);
        gratitudeInput.val(""); //Clear input
        actionInput.val("");
     }
 });
 
-function saveGratitude(gratitude, action) {
-   console.log(gratitude, action, date);
+function saveGratitude(gratitude, action, public) {
+   console.log(gratitude, action, public );
    $.post("/api/submitted", {
       gratitude: gratitude,
-      action: action
+      action: action,
+      public: public
    }).then(function(){
       window.location.replace("/viewGratitude");
    }).catch(function(err) {
@@ -59,9 +62,8 @@ $("#logout-button").click(function() {
  });
 
   //Sets the date
-  const updateTime = function() {
-   $("#date").text(moment().format('dddd, MMMM Do YYYY'));
-   
+const updateTime = function() {
+$("#date").text(moment().format('dddd, MMMM Do YYYY'));
    }
    setInterval(updateTime, 1000);
 });
