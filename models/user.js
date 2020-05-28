@@ -19,6 +19,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
   });
+
+  User.associate = function (models){
+    User.hasMany(models.Gratitude);
+  }
 // ---Only to be used with passport---
 //  User.prototype.validPassword = function (password) {
 //    return bcrypt.compareSync(password, this.password);
