@@ -26,27 +26,14 @@
           <article class="tile is-child box tile-background">
             <p class="title has-text-centered">Gratitudes</p>
             <article class="message">
-              <div class="message-body is-italic">
-               I got to catch up with Judy for coffee. It's been too long!
-              </div>
               
-            </article>
-
-            <article class="message">
-              <div class="message-body is-italic">
-                My baby boy took his first steps! He is growing up too quickly.
-               </div>
-            </article>
-            <article class="message">
-              <div class="message-body is-italic">
-               We received an A+ on project 2.
-               </div>
-            </article>
-
-            <article class="message">
-              <div class="message-body is-italic">
-               The weather is beautiful today. I had a nice long run today. Feel so much better for it.
-               </div>
+                {{#each burgers}}
+                {{#if public}}
+                  <div class="message-body is-italic">{{this.gratitude}}
+                  </div>
+                {{/if}}
+                {{/each}}
+              
             </article>
           </article>
         </div>
