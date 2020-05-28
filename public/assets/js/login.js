@@ -24,6 +24,7 @@ $(document).ready(function() {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the newGratitude page
   function loginUser(email, password) {
+    // eslint-disable-next-line no-undef
     $.post("/api/login", {
       email: email,
       password: password
