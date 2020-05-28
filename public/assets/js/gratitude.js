@@ -1,3 +1,4 @@
+$(document).ready(function() {
 //Adding modal functionality when login and signup buttons are clicked
 $("#login-button").click(function() {
     $(".login").addClass("is-active");  
@@ -21,3 +22,4 @@ $("#login-button").click(function() {
    
    }
    setInterval(updateTime, 1000);
+});
