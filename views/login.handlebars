@@ -64,28 +64,26 @@
         <div class="modal-background"></div>
           <div class="modal-content has-background-white">
             <h1 class="has-text-centered is-size-3"> Gratitude Journal</h1>
-
-            <div class="field">
+            <div class="field ">
               <label class="label">Email</label>
               <div class="control">
-                <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                <input class="input" id="email-input" type="email" placeholder="e.g. alexsmith@gmail.com">
               </div>
             </div>
             <div class="field">
               <label class="label">Password</label>
               <div class="control">
-                <input class="input" type="text" placeholder="********">
+                <input class="input" id="password-input" type="text" placeholder="********">
               </div>
             </div>
             <div class="field is-grouped">
               <div class="control">
-                <button class="button is-info">Login</button>
+                <button class="button is-info" id="login-form" type="submit">Login</button>
               </div>
               <div class="control">
                 <button class="button is-link is-light cancel-button">Cancel</button>
               </div>
             </div>
-            
 
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
@@ -100,18 +98,18 @@
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                <input class="input" type="email" id="email-signup-input"placeholder="e.g. alexsmith@gmail.com">
               </div>
             </div>
             <div class="field">
               <label class="label">Password</label>
               <div class="control">
-                <input class="input" type="text" placeholder="********">
+                <input class="input" type="text" id="password-signup-input"placeholder="********">
               </div>
             </div>
             <div class="field is-grouped">
               <div class="control">
-                <button class="button is-info">Signup</button>
+                <button class="button is-info" type="submit" id="signup-form">Signup</button>
               </div>
               <div class="control">
                 <button class="button is-link is-light cancel-button">Cancel</button>
