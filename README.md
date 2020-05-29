@@ -27,9 +27,8 @@ As a user I want to document the things I am thankful for and my acts of kindnes
 ```
 WHEN I first arrive at the webpage, I login with my username and password.
 THEN I am redirected to a journal 'page' and presented with an inspiring quote.
-THEN I can enter three things I am grateful for and save.
-THEN I can click checkbox to share anonymously on the login page
-THEN I can log a random act of kindness.
+THEN I can enter what I am grateful and an act of kindness.
+THEN I can save gratitude and act of kindness and click a checkbox if I want to share anonymously on the login page
 WHEN I click on a date in the calendar I can look back on past gratitudes.
 THEN I can reflect on all that is good in my life
 ```
@@ -47,7 +46,8 @@ Wireframe URL is https://miro.com/app/board/o9J_ksdsbQw=/
 ## Technologies
 - express
 - nodejs
-- html/css
+- html
+- css
 - JQuery
 - sequelize
 - handle-bars
@@ -57,8 +57,8 @@ Wireframe URL is https://miro.com/app/board/o9J_ksdsbQw=/
 - Heroku
 - Github
 - passport
-- Bulma calendar extension
-- Quotes.rest API
+- TavoCalendar - https://github.com/beinoriusju/TavoCalendar
+- Quotes Free API - https://www.freecodecamp.org/forum/t/free-api-inspirational-quotes-json-with-code-examples/311373
 
 ## Rough Breakdown of Tasks 
 - Front End (Vasavi, Caroline)
