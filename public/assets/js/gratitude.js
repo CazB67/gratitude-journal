@@ -60,13 +60,15 @@ function saveGratitude(gratitude, action, public) {
 $("#logout-button").click(function() {
    window.location.replace("/");
  });
- let data;
- let i = 1;
-  //Sets the date
+
+let data;
+let i = 1;
+
+//Sets the date, updates the quote every minute
 const updateTime = function() {
 $("#date").text(moment().format('dddd, MMMM Do YYYY'));
 $(".quote").text(data[i].text);
-$(".quote-author").text(data[i].author);
+$(".quote-author").text("- " + data[i].author);
    i++;
    if(i === data.length){
       i=0;
@@ -85,7 +87,7 @@ const settings = {
    data = JSON.parse(response);
    console.log(data);
    $(".quote").text(data[0].text);
-   $(".quote-author").text(data[0].author);
+   $(".quote-author").text("- " + data[0].author);
  });
 
 });
