@@ -19,6 +19,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    
   });
 
   Gratitude.associate = function (models){
@@ -28,3 +29,4 @@ module.exports = function (sequelize, DataTypes) {
   }
   return Gratitude;
 };
+
