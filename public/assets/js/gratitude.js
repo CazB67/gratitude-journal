@@ -60,10 +60,32 @@ function saveGratitude(gratitude, action, public) {
 $("#logout-button").click(function() {
    window.location.replace("/");
  });
-
+ let data;
+ let i = 1;
   //Sets the date
 const updateTime = function() {
 $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+$(".quote").text(data[i].text);
+$(".quote-author").text(data[i].author);
+   i++;
+   if(i === data.length){
+      i=0;
    }
-   setInterval(updateTime, 1000);
+   }
+   setInterval(updateTime, 10000);
+
+
+const settings = {
+   "async": true,
+   "crossDomain": true,
+   "url": "https://type.fit/api/quotes",
+   "method": "GET"
+ }
+ $.ajax(settings).then(function (response) {
+   data = JSON.parse(response);
+   console.log(data);
+   $(".quote").text(data[0].text);
+   $(".quote-author").text(data[0].author);
+ });
+
 });
