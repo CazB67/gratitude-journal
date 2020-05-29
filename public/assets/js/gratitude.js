@@ -62,7 +62,7 @@ $("#logout-button").click(function() {
  });
 
 let data;
-let i = 1;
+let i = 0; 
 
 //Sets the date, updates the quote every minute
 const updateTime = function() {
@@ -76,7 +76,7 @@ $(".quote-author").text("- " + data[i].author);
    }
    setInterval(updateTime, 10000);
 
-
+//Ajax call to quotes API
 const settings = {
    "async": true,
    "crossDomain": true,
@@ -85,9 +85,9 @@ const settings = {
  }
  $.ajax(settings).then(function (response) {
    data = JSON.parse(response);
-   console.log(data);
-   $(".quote").text(data[0].text);
-   $(".quote-author").text("- " + data[0].author);
+   //Generate random quote from array
+   i = Math.floor(Math.random()*(data.length-0 + 1));
+   $(".quote").text(data[i].text);
+   $(".quote-author").text("- " + data[i].author);
  });
-
 });
