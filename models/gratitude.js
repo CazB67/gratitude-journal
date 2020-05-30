@@ -1,13 +1,13 @@
 /* eslint-disable */
 module.exports = function (sequelize, DataTypes) {
   const Gratitude = sequelize.define("Gratitude", {
-    gratitudeId: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    gratitude: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    public: {
+    shareable: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
@@ -23,10 +23,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Gratitude.associate = function (models){
-    Gratitude.belongsTo(models.User, {
-      foreignKey: "userId"
-    });
-  }
+    Gratitude.belongsTo(models.User);
+  };
   return Gratitude;
 };
 
