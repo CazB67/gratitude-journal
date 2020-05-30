@@ -21,3 +21,11 @@ $("#login-button").click(function() {
    
    }
    setInterval(updateTime, 1000);
+
+   const my_calendar = new TavoCalendar(".calendar");
+
+      
+         
+   
+
+   

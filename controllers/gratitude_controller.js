@@ -12,4 +12,6 @@ router.get("/", function(req, res) {
 router.get("/v", function(req, res) {
     res.render("viewGratitude");
 });
+
+
   module.exports = router;
