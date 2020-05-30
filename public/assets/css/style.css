@@ -11,8 +11,12 @@
     background-image: url("/assets/img/nature.jpg");
   }
 
-  .background{
+  .background {
     background-color:whitesmoke;
+  }
+
+  .footer{
+    background-color: hsl(204, 86%, 53%);
   }
   .quote {
     margin-top: 2em;
@@ -24,13 +28,20 @@
     text-align: center;
     font-style: italic;
     margin-bottom: 1em;
+    font-weight: bolder;
   }
 
   .field {
     padding: 0.4em;
   }
 
-  .label, .checkbox, .text {
-    font-family: Arial, Helvetica, sans-serif;
+  #search-gratitude {
+    margin-bottom: 3.5em;
   }
 
+.image-container {
+  background: url('/assets/img/beach.jpg') center top no-repeat;
+  box-shadow: 25px 25px 50px 10px whitesmoke inset, -25px -25px 40px 10px whitesmoke inset; 
+  width: 332px;
+  height: 187px;
+  }

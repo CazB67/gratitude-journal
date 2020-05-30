@@ -6,9 +6,9 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 
 // Setting up port and requiring models for syncing
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 8080;
-//const db = require("./models");
-
+const db = require("./models");
 // Creating express app and configuring middleware needed for authentication
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -27,8 +27,8 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 const routes = require("./controllers/gratitude_controller");
 app.use(routes);
 // Syncing our database and logging a message to the user upon success
-//db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
-//});
+});
