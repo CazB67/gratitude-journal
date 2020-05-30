@@ -23,10 +23,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Gratitude.associate = function (models){
-    Gratitude.belongsTo(models.User, {
-     
-    });
-  }
+    Gratitude.belongsTo(models.User);
+  };  
   return Gratitude;
 };
 
