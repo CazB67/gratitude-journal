@@ -58,6 +58,7 @@ function saveGratitude(description, action, shareable) {
 
 //Return to main screen when logout button is clicked.
 $("#logout-button").click(function() {
+   //check post 
    window.location.replace("/");
  });
 
@@ -75,7 +76,7 @@ $(".quote-author").text("- " + data[i].author);
    }
    }
 
-   setInterval(updateTime, 1000);
+   setInterval(updateTime, 10000);
 
 const my_calendar = new TavoCalendar(".calendar");
 $(".calendar").on("calendar-select", function(event){

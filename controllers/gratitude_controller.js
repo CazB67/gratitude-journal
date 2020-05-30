@@ -5,13 +5,14 @@ const db = require("../models");
 
 router.get("/", function(req, res) {
     db.Gratitude.findAll({attributes: ['description']}).then(function(results) {
+        let data = results.map((result) => {
+            return {description: result.description}
+        })
         let hbsObject = {
-            description: results
+            results: data
         };
-        //res.json(hbsObject);
         console.log(hbsObject);
         res.render("login", hbsObject);
-        //res.json(results);
     })
   });
 
