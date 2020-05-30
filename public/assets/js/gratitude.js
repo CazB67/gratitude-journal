@@ -44,12 +44,13 @@ gratitudeForm.on("click", function(event) {
 });
 
 function saveGratitude(description, action, shareable) {
-   console.log(description, action, shareable );
    $.post("/api/submitted", {
       description: description,
       action: action,
       shareable: shareable
    }).then(function(){
+      console.log(description);
+      //if(description ===)
       window.location.replace("/viewGratitude");
    }).catch(function(err) {
       console.log(err);

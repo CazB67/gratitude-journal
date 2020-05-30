@@ -31,6 +31,18 @@ router.get("/viewgratitude", function(req, res) {
     res.render("viewGratitude");
 });
 
+//Post to insert gratitude to database
+router.post("/api/submitted", function(req, res) {
+    db.Gratitude.create({
+        description: req.body.description,
+        action: req.body.action,
+        shareable: req.body.shareable
+    })
+    .then(function(dbGratitude){
+        res.json(dbGratitude);
+    });
+});
+
 //These two posts were used to check that I'd grabbed the right element from the html. It would need to be altered.
 router.post("/api/login", function(req, res) {
    if(req.body.email === "caroline.portilla@gmail.com" && req.body.password === "done") {
