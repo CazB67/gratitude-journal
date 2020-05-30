@@ -4,12 +4,12 @@ const db = require("../models");
 
 
 router.get("/", function(req, res) {
-    db.Gratitude.findAll({attributes: ['description']}).then(function(results) {
-        let data = results.map((result) => {
+    db.Gratitude.findAll({where: {shareable:true} }).then(function(results) {
+        let dummy = results.map((result) => {
             return {description: result.description}
         })
         let hbsObject = {
-            results: data
+            results: dummy
         };
         console.log(hbsObject);
         res.render("login", hbsObject);

@@ -11,7 +11,7 @@ module.exports = {
       {
         description: 'Had a coffee with my friends',
         action: 'Donated to the local food bank.',
-        shareable: true,
+        shareable: false,
         createdAt: new Date(),
         updatedAt: new Date(),
         userId: 2
