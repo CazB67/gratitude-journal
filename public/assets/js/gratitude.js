@@ -77,7 +77,10 @@ $(".quote-author").text("- " + data[i].author);
 
    setInterval(updateTime, 1000);
 
-   const my_calendar = new TavoCalendar(".calendar");
+const my_calendar = new TavoCalendar(".calendar");
+$(".calendar").on("calendar-select", function(event){
+   console.log(my_calendar.getSelected());
+})
 
 //Ajax call to quotes API
 const settings = {
