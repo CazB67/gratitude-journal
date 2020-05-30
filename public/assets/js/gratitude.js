@@ -74,7 +74,10 @@ $(".quote-author").text("- " + data[i].author);
       i=0;
    }
    }
-   setInterval(updateTime, 10000);
+
+   setInterval(updateTime, 1000);
+
+   const my_calendar = new TavoCalendar(".calendar");
 
 //Ajax call to quotes API
 const settings = {
@@ -91,3 +94,4 @@ const settings = {
    $(".quote-author").text("- " + data[i].author);
  });
 });
+
