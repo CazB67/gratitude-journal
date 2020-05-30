@@ -11,7 +11,7 @@ module.exports = {
       {
         description: 'Had a coffee with my friends',
         action: 'Donated to the local food bank.',
-        shareable: false,
+        shareable: true,
         createdAt: new Date(),
         updatedAt: new Date(),
         userId: 2
@@ -23,7 +23,40 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         userId: 3
-      }]);
+      },
+      {
+        description: 'Had the best roast for dinner tonight. Thanks mum',
+        action: 'Paid for someone elses meal the the restaurant.',
+        shareable: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        userId: 3
+      },
+      {
+        description: 'Nap after a busy few weeks',
+        action: 'Paid for someone elses meal the the restaurant.',
+        shareable: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        userId: 3
+      },
+      {
+        description: 'Went for a long walk along the beach',
+        action: 'Paid for someone elses meal the the restaurant.',
+        shareable: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        userId: 3
+      },
+      {
+        description: "It is my birthday. So spoilt.",
+        action: 'Paid for someone elses meal the the restaurant.',
+        shareable: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        userId: 3
+      }
+    ]);
     },
     down: (queryInterface, Sequelize) => {
       return queryInterface.bulkDelete('Gratitude', null, {});
