@@ -29,26 +29,26 @@ const shareGratitudes = $("#checkbox");
 gratitudeForm.on("click", function(event) {
     event.preventDefault();
     let gratitudeData = {
-       gratitude: gratitudeInput.val().trim(),
+       description: gratitudeInput.val().trim(),
        action: actionInput.val().trim(),
-       public: shareGratitudes.prop("checked")
+       shareable: shareGratitudes.prop("checked")
 
     };
-    if(!gratitudeData.gratitude || !gratitudeData.action){
+    if(!gratitudeData.description || !gratitudeData.action){
        return
     }else{
-       saveGratitude(gratitudeData.gratitude, gratitudeData.action, gratitudeData.public);
+       saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
        gratitudeInput.val(""); //Clear input
        actionInput.val("");
     }
 });
 
-function saveGratitude(gratitude, action, public) {
-   console.log(gratitude, action, public );
+function saveGratitude(description, action, shareable) {
+   console.log(description, action, shareable );
    $.post("/api/submitted", {
-      gratitude: gratitude,
+      description: description,
       action: action,
-      public: public
+      shareable: shareable
    }).then(function(){
       window.location.replace("/viewGratitude");
    }).catch(function(err) {
@@ -74,7 +74,10 @@ $(".quote-author").text("- " + data[i].author);
       i=0;
    }
    }
-   setInterval(updateTime, 10000);
+
+   setInterval(updateTime, 1000);
+
+   const my_calendar = new TavoCalendar(".calendar");
 
 //Ajax call to quotes API
 const settings = {
@@ -91,3 +94,4 @@ const settings = {
    $(".quote-author").text("- " + data[i].author);
  });
 });
+

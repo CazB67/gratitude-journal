@@ -1,8 +1,18 @@
 let express = require("express");
 const router = express.Router();
+const db = require("../models");
+
 
 router.get("/", function(req, res) {
-      res.render("login");
+    db.Gratitude.findAll({attributes: ['description']}).then(function(results) {
+        let hbsObject = {
+            description: results
+        };
+        //res.json(hbsObject);
+        console.log(hbsObject);
+        res.render("login", hbsObject);
+        //res.json(results);
+    })
   });
 
 router.get("/newgratitude", function(req, res) {
