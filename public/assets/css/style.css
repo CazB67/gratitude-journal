@@ -45,3 +45,11 @@
   width: 332px;
   height: 187px;
   }
+  
+  .message {
+    width: auto;
+    height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+  }
