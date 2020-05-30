@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Requiring necessary npm packages
 let express = require("express");
 const session = require("express-session");

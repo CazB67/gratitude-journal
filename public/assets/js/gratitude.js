@@ -32,7 +32,6 @@ gratitudeForm.on("click", function(event) {
        description: gratitudeInput.val().trim(),
        action: actionInput.val().trim(),
        shareable: shareGratitudes.prop("checked")
-
     };
     if(!gratitudeData.description || !gratitudeData.action){
        return
@@ -74,10 +73,10 @@ $(".quote-author").text("- " + data[i].author);
    if(i === data.length){
       i=0;
    }
-   }
-
+}
    setInterval(updateTime, 10000);
 
+//Calendar function need user authentication details to complete
 const my_calendar = new TavoCalendar(".calendar");
 $(".calendar").on("calendar-select", function(event){
    console.log(my_calendar.getSelected());
