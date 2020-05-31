@@ -6,6 +6,9 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+           <a class="button is-inverted is-info" id="write-button">
+            <b>New Gratitude</b> 
+          </a>
           <a class="button is-inverted is-info" id="logout-button">
             <b>Logout</b> 
           </a>
@@ -32,18 +35,17 @@
             </article>
           </div>
         </div>
-
       </div>
   
     <div class="tile is-parent">
       <article class="tile is-child notification">
         <div class="content">
           <p class="subtitle has-text-centered is-size-3">Reflecting on past gratitudes</p>
-           <p class="subtitle is-size-4 search-date">{{this.createdAt}}</p>
+           <p class="subtitle is-size-4" id="search-date">{{this.createdAt}}</p>
            <p class="subtitle is-size-4">Gratitude</p>
            <p class="text is-size-6 is-italic" id="search-gratitude">{{this.gratitude}}</p>
           <p class="subtitle is-size-4">Act of Kindness</p>
-           <p class="text is-size-6 is-italic search-action">{{this.action}}</p>
+           <p class="text is-size-6 is-italic" id="search-action">{{this.action}}</p>
            <article class="tile is-child image-container"></article>
         </div>
       </article>

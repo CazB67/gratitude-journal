@@ -1,19 +1,33 @@
 /* eslint-disable no-undef */
 $(document).ready(function() {
-//Adding modal functionality when login button is clicked
-$("#login-button").click(function() {
-    $(".login").addClass("is-active");  
-  });
-  
-//Closes the modal when cross is clicked  
-$(".modal-close").click(function() {
-   $(".modal").removeClass("is-active");
-});
+   let data;
+   let i = 0; 
+//Sets the date, updates the quote every minute
+   const updateTime = function() {
+   $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+   $(".quote").text(data[i].text);
+   $(".quote-author").text("- " + data[i].author);
+      i++;
+      if(i === data.length){
+         i=0;
+      }
+   }
+      setInterval(updateTime, 10000);
+      
+   //Adding modal functionality when login button is clicked
+   $("#login-button").click(function() {
+      $(".login").addClass("is-active");  
+   });
+   
+   //Closes the modal when cross is clicked  
+   $(".modal-close").click(function() {
+      $(".modal").removeClass("is-active");
+   });
 
-//Closes the modal when close button is clicked  
-$(".cancel-button").click(function() {
-   $(".modal").removeClass("is-active");
-});
+   //Closes the modal when close button is clicked  
+   $(".cancel-button").click(function() {
+      $(".modal").removeClass("is-active");
+   });
 
 //Adding modal functionality when signup button is clicked
 $("#signup-button").click(function() {
@@ -42,6 +56,7 @@ gratitudeForm.on("click", function(event) {
     }
 });
 
+//Send description, action and shareable input to the server
 function saveGratitude(description, action, shareable) {
    $.post("/api/submitted", {
       description: description,
@@ -62,26 +77,41 @@ $("#logout-button").click(function() {
    window.location.replace("/");
  });
 
-let data;
-let i = 0; 
+$("#view-button").click(function() {
+   window.location.replace("/viewGratitude");
+});
 
-//Sets the date, updates the quote every minute
-const updateTime = function() {
-$("#date").text(moment().format('dddd, MMMM Do YYYY'));
-$(".quote").text(data[i].text);
-$(".quote-author").text("- " + data[i].author);
-   i++;
-   if(i === data.length){
-      i=0;
-   }
-}
-   setInterval(updateTime, 10000);
+$("#write-button").click(function() {
+   window.location.replace("/newGratitude");
+});
 
 //Calendar function need user authentication details to complete
 const my_calendar = new TavoCalendar(".calendar");
-$(".calendar").on("calendar-select", function(event){
-   console.log(my_calendar.getSelected());
+$(".calendar").on("calendar-select", function(){
+   showGratitude(my_calendar.getSelected());
 })
+
+//On calendar click of date send date to server and add response to specific parts of the html 
+function showGratitude(createdAt) {
+   //Date clicked displayed in correct order
+   let clickedDate = createdAt.split("-");
+   $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
+   console.log(createdAt);
+   $.post("/api/searched", {
+      createdAt: createdAt
+   }).then(function(res){
+      console.log(res);
+      if(res == null ){
+         $("#search-action").text("No act of kindness written on this day");
+         $("#search-gratitude").text("No gratitude written on this day");
+      }else{
+         $("#search-gratitude").text(res.description);
+         $("#search-action").text(res.action);
+      }
+   }).catch(function(err) {
+      console.log(err);
+    });
+}
 
 //Ajax call to quotes API
 const settings = {

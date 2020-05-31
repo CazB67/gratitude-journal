@@ -6,9 +6,13 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+              <a class="button is-inverted is-info" id="view-button">
+                <b>View Gratitudes</b> 
+              </a>
               <a class="button is-inverted is-info" id="logout-button">
                 <b>Logout</b> 
-               </a>
+              </a>
+              
             </div>
           </div>
         </div>
@@ -21,16 +25,14 @@
         <div class="tile is-vertical is-5">
     <div class="tile">
       <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification tile-background">
-          <p class="subtitle">Click on date to view past gratitudes</p>
-          <div class="calendar">
-            <p>Calendar</p>
-          </div>
-        </article>
-        <article class="tile is-child notification tile-background">
-          <p class="subtitle is-size-3" id="raok-title">Random acts of kindness ideas</p>
+        <article class="tile is-child notification tile-background ">
+        <p class="subtitle is-size-3" id="raok-title">Random acts of kindness ideas</p>
           <p class="text is-size-6 has-text-justified is-italic">Create a holiday to celebrate someone you love. Find opportunities to give compliments. Help an elderly person with their groceries. Call your mum. Call a friend. Mow the lawn for your neighbours. Hold open the door for someone. Pay for someone's meal at a restaurant. Pick up litter on the beach. Send an email to a family member or friend. Take the time to listen to someone. Spend time with your grandparents. Cook a meal for a neighbour.
           </p>
+        </article>
+        <article class="tile is-child notification tile-background">
+          <div id="tree"></div>
+          
         </article>
       </div>
     </div>

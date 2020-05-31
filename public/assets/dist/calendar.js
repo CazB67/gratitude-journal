@@ -69,7 +69,7 @@
     }
 
     var MOMENT_F_MONTH = "YYYY, MMMM";
-    var MOMENT_F =  'DD-MM-YYYY'
+    var MOMENT_F =  'YYYY-MM-DD'
 
     var options_default = {
         format: MOMENT_F,
