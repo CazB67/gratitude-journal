@@ -1,7 +1,7 @@
 let express = require("express");
 const router = express.Router();
 const db = require("../models");
-
+const { Op } = require("sequelize");
 
 router.get("/", function(req, res) {
     db.Gratitude.findAll({
@@ -25,6 +25,19 @@ router.get("/", function(req, res) {
 
 router.get("/newgratitude", function(req, res) {
     res.render("newGratitude");
+});
+
+//
+router.post("/api/searched", function(req, res) {
+    console.log(req.body.createdAt);
+    db.Gratitude.findOne({
+        where: {
+           createdAt:{[Op.startsWith]: req.body.createdAt}  
+        }
+    }).then(function(dbGratitude){
+        console.log(dbGratitude);
+        res.json(dbGratitude);
+    })
 });
 
 router.get("/viewgratitude", function(req, res) {
