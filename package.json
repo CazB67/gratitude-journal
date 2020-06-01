@@ -2,8 +2,12 @@
   "name": "project2",
   "version": "1.0.0",
   "description": "gratitude",
-  "main": "index.js",
+  "engines": {
+    "node": "12.13.x"
+},
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": " eslint --ext .js models/ "
   },
   "repository": {
@@ -27,9 +31,6 @@
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.11"
   },
-  "engines": {
-    "node": ">=12"
-},
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
