@@ -1,11 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting references to our form and inputs
   const loginForm = $("#login-form");
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("click", function(event) {
+  loginForm.on("click", function (event) {
     event.preventDefault();
     let userData = {
       email: emailInput.val().trim(),
@@ -29,17 +29,21 @@ $(document).ready(function() {
       email: email,
       password: password
     })
-      .then(function(res) {
-        if(res.authenticated === true){
+      .then(function (res) {
+        console.log({ res })
+        if (res) {
           window.location.replace("/newGratitude");
-        }else{
+        } else {
           console.log(res);
         }
-        
+
         // If there's an error, log the error
       })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .catch(handleLoginErr);
+  }
+  function handleLoginErr(err) {
+    console.log(err.message)
+    $("#alert .msg").text(err.message);
+    $("#alert").fadeIn(500);
   }
 });
