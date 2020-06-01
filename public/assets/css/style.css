@@ -9,6 +9,7 @@
 
   .main  {
     background-image: url("/assets/img/nature.jpg");
+    min-height: 450px;
   }
 
   .background {
@@ -38,20 +39,6 @@
   #search-gratitude {
     margin-bottom: 3.5em;
   }
-
-.image-container {
-  background: url('/assets/img/beach.jpg') center top no-repeat;
-  box-shadow: 25px 25px 50px 10px whitesmoke inset, -25px -25px 40px 10px whitesmoke inset; 
-  width: 628px;
-  height: 354px;
-  }
-
-  #tree {
-    background: url('/assets/img/tree.jpg') center top no-repeat;
-    box-shadow: 25px 25px 50px 10px whitesmoke inset, -25px -25px 40px 10px whitesmoke inset; 
-    width: 525px;
-    height: 420px;
-    }
   
   .message {
     width: auto;
