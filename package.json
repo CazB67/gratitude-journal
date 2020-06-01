@@ -4,7 +4,7 @@
   "description": "gratitude",
   "engines": {
     "node": "12.13.x"
-},
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
