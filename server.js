@@ -49,7 +49,7 @@ app.use(passport.session());
 //require("./routes/api-routes.js")(app);
 app.use(router);
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync( ).then(function() {
+db.sequelize.sync(/*{ force: true }*/ ).then(function() {
   console.log('Nice! Database looks fine')
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);

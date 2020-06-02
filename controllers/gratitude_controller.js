@@ -70,7 +70,7 @@ exports.apiSignup = function (req, res, done) {
       })
         .then(function () {
           return done(null, false, {    //no error in the operation, but user exists and can't create
-            message: "User dublicate!"
+            message: "User duplicate!"
           });
         })
         .catch(function (err) {
