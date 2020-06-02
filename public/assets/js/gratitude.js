@@ -13,6 +13,7 @@ $(document).ready(function () {
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
+   
    });
 
    let data;
@@ -89,12 +90,13 @@ $(document).ready(function () {
          shareable: shareGratitudes.prop("checked")
          
       };
-
-      if(!gratitudeData.description || !gratitudeData.action){
-
-         return
+      if(gratitudeData.description === ""){
+         console.log("You need to add a gratitude");
+         return;
+      }else if (gratitudeData.action === ""){
+         console.log("Add an act or type none");
+         return;
       }else{
-        
       if (!gratitudeData.description || !gratitudeData.action) {
          return
       } else {
@@ -112,7 +114,6 @@ $(document).ready(function () {
          shareable: shareable
       }).then(function () {
          console.log(description);
-         //if(description ===)
          window.location.replace("/viewGratitude");
       }).catch(function (err) {
          console.log(err);
