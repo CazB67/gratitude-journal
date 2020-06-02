@@ -81,14 +81,12 @@ $(document).ready(function () {
    const actionInput = $("#action-input");
    const shareGratitudes = $("#checkbox");
    //On click function to get input
-   gratitudeForm.on("click", function (event) {
+   gratitudeForm.on("click", function(event) {
       event.preventDefault();
-      toastr.info('Gratitude saved for today', {timeOut:300});
       let gratitudeData = {
          description: gratitudeInput.val().trim(),
          action: actionInput.val().trim(),
          shareable: shareGratitudes.prop("checked")
-         
       };
       if(gratitudeData.description === ""){
          console.log("You need to add a gratitude");
@@ -97,9 +95,6 @@ $(document).ready(function () {
          console.log("Add an act or type none");
          return;
       }else{
-      if (!gratitudeData.description || !gratitudeData.action) {
-         return
-      } else {
          saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
          gratitudeInput.val(""); //Clear input
          actionInput.val("");
