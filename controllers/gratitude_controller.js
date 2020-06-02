@@ -3,14 +3,14 @@ const { Op } = require("sequelize");
 
 exports = module.exports
 
+//-------
 exports.root = function (req, res) {
   db.Gratitude.findAll({
-    limit: 10,
+    limit: 10,   //R?
     where: {
       shareable: true,
     },
-    order: [['id', 'DESC']]
-
+    order: [['id', 'DESC']]  //R?
   }).then(function (results) {
     let data = results.map((result) => {
       return { description: result.description }
@@ -18,6 +18,7 @@ exports.root = function (req, res) {
     let hbsObject = {
       results: data
     };
+    console.log("line21 in controller")
     console.log(hbsObject);
     res.render("login", hbsObject);
   })
