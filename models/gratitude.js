@@ -19,7 +19,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    
+    createdAt : {
+      type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW,
+    }
   });
 
   Gratitude.associate = function (models){
