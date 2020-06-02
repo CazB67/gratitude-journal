@@ -13,6 +13,7 @@ $(document).ready(function () {
     };
 
     if (!userData.email || !userData.password) {
+       toastr.warning('Please enter valid email and password', {timeOut: 300});
       return;
     }
     // If we have an email and password, run the signUpUser function
