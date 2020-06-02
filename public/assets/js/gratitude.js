@@ -13,6 +13,7 @@ $(document).ready(function() {
       i = Math.floor(Math.random()*(data.length-0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
+   
    });
 
    let data;
@@ -76,8 +77,12 @@ $(document).ready(function() {
          action: actionInput.val().trim(),
          shareable: shareGratitudes.prop("checked")
       };
-      if(!gratitudeData.description || !gratitudeData.action){
-         return
+      if(gratitudeData.description === ""){
+         console.log("You need to add a gratitude");
+         return;
+      }else if (gratitudeData.action === ""){
+         console.log("Add an act or type none");
+         return;
       }else{
          saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
          gratitudeInput.val(""); //Clear input
@@ -93,7 +98,6 @@ $(document).ready(function() {
          shareable: shareable
       }).then(function(){
          console.log(description);
-         //if(description ===)
          window.location.replace("/viewGratitude");
       }).catch(function(err) {
          console.log(err);

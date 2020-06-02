@@ -27,7 +27,7 @@ router.get("/newgratitude", function(req, res) {
     res.render("newGratitude");
 });
 
-//
+//Searching for the gratitude where the date clicked on calendar matches the date created
 router.post("/api/searched", function(req, res) {
     console.log(req.body.createdAt);
     db.Gratitude.findOne({
