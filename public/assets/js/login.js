@@ -45,7 +45,7 @@ $(document).ready(function () {
       .catch(handleLoginErr);
   }
   function handleLoginErr(err) {
-    console.log(err.message)
+    console.log(message)
     $("#alert .msg").text(err.message);
     $("#alert").fadeIn(500);
   }

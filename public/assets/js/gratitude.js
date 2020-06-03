@@ -9,6 +9,7 @@ $(document).ready(function () {
    }
    $.ajax(settings).then(function (response) {
       data = JSON.parse(response);
+      console.log(data);
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);

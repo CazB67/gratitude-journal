@@ -1,6 +1,5 @@
 const db = require("../models");
 const { Op } = require("sequelize");
-
 exports = module.exports
 
 //-------
@@ -62,7 +61,7 @@ exports.submitted = function (req, res) {
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
     if (user) {
-        toastr.warning('user already there', {timeOut:300})
+        toastr.warning('User already exists', {timeOut:300})
       console.log("found issue")
       res.status(401).json({ success: false, msg: "That email is already taken" });
       return;

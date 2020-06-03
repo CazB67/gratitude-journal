@@ -35,7 +35,7 @@ const customFields =
       else if (!dbUser.validPassword(password)) {   //validates the passport , this function is defined in the USER model
         console.log("2")
         return done(null, false, {                    // we just say there was no error but the password was also invalid
-          message: "Incorrect password."
+          message: "Incorrect password.",
         });
       }
       // If none of the above, return the user  
@@ -49,8 +49,8 @@ const customFields =
   }
 //------------------------------------------------------------
 passport.use(new FacebookStrategy({
-  clientID: configAuth.facebookAuth.clientID,
-  clientSecret: configAuth.facebookAuth.clientSecret,
+  clientID: process.env.clientID,
+  clientSecret: process.env.clientSecret,
   callbackURL: configAuth.facebookAuth.callbackURL,
   profileFields: ['name', 'email', 'link', 'locale', 'timezone', 'gender'],
   passReqToCallback: true,

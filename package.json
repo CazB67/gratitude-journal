@@ -34,6 +34,7 @@
     "express-mysql-session": "^2.1.4",
     "express-session": "^1.17.1",
     "express-session-sequelize": "^2.2.0",
+    "express-toastr": "^2.0.2",
     "handlebars": "^4.7.6",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
