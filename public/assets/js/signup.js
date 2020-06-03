@@ -33,6 +33,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function () {
+          toastr.success('Signed up successfully', {timeOut:300})
           window.location.replace("/newGratitude");
         // If there's an error, log the error
       })

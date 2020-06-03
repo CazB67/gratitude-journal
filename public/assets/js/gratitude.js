@@ -61,6 +61,7 @@ $(document).ready(function () {
          .then(function (res) {
            console.log("response to logout" + res);
            window.location.replace("/");
+           toastr.info('Logged out successfully', {timeOut:300})
          })
          .catch(function (err) {
            console.log(err);
@@ -83,6 +84,7 @@ $(document).ready(function () {
    //On click function to get input
    gratitudeForm.on("click", function(event) {
       event.preventDefault();
+      toastr.info('Gratitude saved for today', {timeOut:300});
       let gratitudeData = {
          description: gratitudeInput.val().trim(),
          action: actionInput.val().trim(),

@@ -8,7 +8,6 @@ $(document).ready(function () {
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("click", function (event) {
     event.preventDefault();
-    toastr.success('Logged in succesfully', {timeOut: 300});
     let userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
@@ -36,6 +35,7 @@ $(document).ready(function () {
         console.log("hhhhhhhhhhhhhhhhhhhhh" + { res })
         if (res) {
           window.location.replace("/newGratitude");
+          toastr.success('Logged in succesfully', {timeOut: 300});
         } else {
           console.log(res);
         }
