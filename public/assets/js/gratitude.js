@@ -13,7 +13,6 @@ $(document).ready(function () {
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
-   
    });
 
    let data;
@@ -120,6 +119,7 @@ $(document).ready(function () {
    //Calendar function need user authentication details to complete
    const my_calendar = new TavoCalendar(".calendar");
    $(".calendar").on("calendar-select", function () {
+      
       showGratitude(my_calendar.getSelected());
    })
 

@@ -26,17 +26,18 @@ $(document).ready(function () {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the newGratitude page
   function loginUser(email, password) {
-
     $.post("/api/login", {
       email: email,
       password: password
     })
       .then(function (res) {
-        console.log("hhhhhhhhhhhhhhhhhhhhh" + { res })
+       
+        console.log("=============" + res);
         if (res) {
           window.location.replace("/newGratitude");
           toastr.success('Logged in succesfully', {timeOut: 300});
         } else {
+          handleLoginErr(res);
           console.log(res);
         }
 
@@ -46,7 +47,6 @@ $(document).ready(function () {
   }
   function handleLoginErr(err) {
     console.log(err.message)
-    $("#alert .msg").text(err.message);
-    $("#alert").fadeIn(500);
+    toastr.warning(err.message, {timeOut: 300});
   }
 });

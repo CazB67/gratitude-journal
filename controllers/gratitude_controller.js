@@ -61,30 +61,29 @@ exports.submitted = function (req, res) {
 
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
-    if (user) {
-        toastr.warning('user already there', {timeOut:300})
-      console.log("found issue")
-      res.status(401).json({ success: false, msg: "That email is already taken" });
+    if (user) 
+      res.status(202).json({ success: false, message: "That email is already taken" });
       return;
       //res.status(401).json({err:"That email is already taken"});
       //return done(null, false, { message: 'That email is already taken' });
-    }});
+    }
+  });
     //else {
       db.User.create({    //no error in the operation, user didn't exist and user created
         email: req.body.email,
         password: req.body.password
       })
         .then(function () {
+          // Return the success of the insert.....
+         // res.status(202).json({ success: true, message: "Giddy Up" });
+          // Then redirecct to the login api. 
           res.redirect(307, "/api/login");
           //console.log(data)
-         // res.redirect("/newGratitude");
+         //res.redirect("/newGratitude");
 
         })
         .catch(function (err) {
-          console.log(err)
-          return done(null, false, {    // error in the operation,
-            message: "Error in db operation!"
-          });
+          return done(null, false, { Message: "Error in db operation!" });
         });
    // }
   //});

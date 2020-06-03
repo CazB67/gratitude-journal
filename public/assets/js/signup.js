@@ -32,15 +32,22 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function () {
-          toastr.success('Signed up successfully', {timeOut:300})
+      .then(function (res) 
+        if  (res.id >= 0){
+
           window.location.replace("/newGratitude");
-        // If there's an error, log the error
+        }
+        else{
+          handleLoginErr(res);
+          $("#signup").removeClass("is-active");
+          $("#login-modal").addClass("is-active");
+        }
       })
       .catch(handleLoginErr);
   }
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.message);
-    $("#alert").fadeIn(500);
+    console.log(err.message);
+    toastr.warning(err.message, {timeOut: 300});
+      
   }
 });
