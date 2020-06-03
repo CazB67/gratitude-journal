@@ -32,10 +32,9 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function (res) {
-        
-        console.log(res +"gfgffffffffffffffffffffffffffffffffffff");
+      .then(function (res) 
         if  (res.id >= 0){
+
           window.location.replace("/newGratitude");
         }
         else{

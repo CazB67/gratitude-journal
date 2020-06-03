@@ -35,6 +35,7 @@ $(document).ready(function () {
         console.log("=============" + res);
         if (res) {
           window.location.replace("/newGratitude");
+          toastr.success('Logged in succesfully', {timeOut: 300});
         } else {
           handleLoginErr(res);
           console.log(res);
