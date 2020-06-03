@@ -31,6 +31,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function (res) {
+        console.log("received res:" + res)
         if  (res.id >= 0){
           window.location.replace("/newGratitude");
         }
