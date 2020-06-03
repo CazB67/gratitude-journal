@@ -1,4 +1,4 @@
-const passport = require("passport");//passport frame work which is a middleware framework that integrates with exp.js app and handles all 
+const passport = require("passport");//passport frame work which is a milldeware framework that integrates with exp.js app and handles all 
 //authentication logic using specifc strategies we choose i.e. passport locat or passport JWT or passport-OAuth or passport-instgram.. allows developers to devlelop 
 //other middlewares/strategies for authentication
 // Passport strategy:    Each strategy uses the passport JS framework as a template 
@@ -7,7 +7,6 @@ const passport = require("passport");//passport frame work which is a middleware
 // Setting up port and requiring models for syncing
 let LocalStrategy = require("passport-local").Strategy;
 let db = require("../models");
-require('dotenv').config() 
 let configAuth = require('./auth')
 let FacebookStrategy = require('passport-facebook').Strategy
 // Our user will sign in using an email, rather than a "username"
@@ -28,14 +27,14 @@ const customFields =
       // If there's no user with the given email
       if (!dbUser) {
         console.log("1")
-        return done(null, false, {    //means: no error in the operation but this is also not a user
+        return done(null, false, {    //no error in the operation but this is also not a user
           message: "Incorrect email."       
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect
       else if (!dbUser.validPassword(password)) {   //validates the passport , this function is defined in the USER model
         console.log("2")
-        return done(null, false, {              // this is where there no error but the password was also invalid
+        return done(null, false, {                    // we just say there was no error but the password was also invalid
           message: "Incorrect password."
         });
       }
@@ -50,8 +49,8 @@ const customFields =
   }
 //------------------------------------------------------------
 passport.use(new FacebookStrategy({
-  clientID: process.env.clientID,
-  clientSecret: process.env.clientSecret,
+  clientID: configAuth.facebookAuth.clientID,
+  clientSecret: configAuth.facebookAuth.clientSecret,
   callbackURL: configAuth.facebookAuth.callbackURL,
   profileFields: ['name', 'email', 'link', 'locale', 'timezone', 'gender'],
   passReqToCallback: true,
@@ -73,21 +72,21 @@ passport.use(new FacebookStrategy({
         return done(null, user);  //user authenticated by FB and found in local database
       }
       else {    //user authenticated but not found  in database hence proceed to signup inside local DB
-        db.User.create({       // this will create username in the app databased using data received from FB
+        db.User.create({
           facebookId: profile.id,
           facebookToken: accessToken,
           facebookName: profile.name.givenName + ' ' + profile.name.familyName,
           email: profile._json.email,
         })
           .then(function (user) {
-            console.log('created user using facebook data');
+            console.log('created user');
             console.log({ user })
             return done(null, user)
             // res.redirect(307, "/api/login");
           })
           .catch(function (err) {
             console.log(err)
-            console.log('errorrrr facebook authentication');   // error with fb authentication
+            console.log('errorrrr');
             return done(err, null)
             // res.status(401).json(err);
             //res.redirect("/"); 
