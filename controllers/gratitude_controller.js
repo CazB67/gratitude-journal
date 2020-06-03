@@ -48,6 +48,16 @@ exports.viewGratitude = function (req, res) {
 
 //Post to insert gratitude to database
 exports.submitted = function (req, res) {
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  console.log(date);
+  db.Gratitude.findOne({where: { userId: req.user.id, createdAt: date }}).then(function (gratitude){
+    if (gratitude){
+      console.log("There is already a gratitude posted for today");
+      res.status(403).json({ success: false, msg: "You've already made a post today" });
+      return;
+    }
+  });
   db.Gratitude.create({
     description: req.body.description,
     action: req.body.action,
