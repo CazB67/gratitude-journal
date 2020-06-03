@@ -55,18 +55,20 @@ exports.submitted = function (req, res) {
     if (gratitude){
       console.log("There is already a gratitude posted for today");
       res.status(403).json({ success: false, msg: "You've already made a post today" });
-      return;
+    } else {
+      db.Gratitude.create({
+        description: req.body.description,
+        action: req.body.action,
+        shareable: req.body.shareable,
+        UserId: req.user.id
+      })
+        .then(function (dbGratitude) {
+          res.json(dbGratitude);
+        });
     }
+
   });
-  db.Gratitude.create({
-    description: req.body.description,
-    action: req.body.action,
-    shareable: req.body.shareable,
-    UserId: req.user.id
-  })
-    .then(function (dbGratitude) {
-      res.json(dbGratitude);
-    });
+  
 };
 
 exports.apiSignup = function (req, res, done) {
