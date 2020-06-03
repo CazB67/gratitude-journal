@@ -1,33 +1,39 @@
 /* eslint-disable no-undef */
+
 $(document).ready(function () {
+   let data;
+   let i = 0;
    //Ajax call to quotes API
    const settings = {
       "async": true,
       "crossDomain": true,
       "url": "https://type.fit/api/quotes",
-      "method": "GET"
+      "method": "GET",
+      dataType: "json"
+       
    }
    $.ajax(settings).then(function (response) {
+      console.log(response + "fgfggggggggggggggggggffg");
       data = JSON.parse(response);
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
-   });
-
-   let data;
-   let i = 0;
-   //Sets the date, updates the quote every minute
-   const updateTime = function () {
-      $("#date").text(moment().format('dddd, MMMM Do YYYY'));
-      $(".quote").text(data[i].text);
-      $(".quote-author").text("- " + data[i].author);
-      i++;
-      if (i === data.length) {
-         i = 0;
+   }).then(function (data) {
+      const updateTime = function () {
+         $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+         $(".quote").text(data[i].text);
+         $(".quote-author").text("- " + data[i].author);
+         i++;
+         if (i === data.length) {
+            i = 0;
+         }
       }
-   }
-   setInterval(updateTime, 10000);
+      setInterval(updateTime, 10000);
+   });
+   
+   //Sets the date, updates the quote every minute
+   
 
    //Adding modal functionality when facebook button is clicked
    // $("#facebook-button").click(function () {
