@@ -1,5 +1,3 @@
-
-
 /* eslint-disable no-undef */
 $(document).ready(function () {
   // Getting references to our form and input
@@ -32,9 +30,8 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function (res) 
+      .then(function (res) {
         if  (res.id >= 0){
-
           window.location.replace("/newGratitude");
         }
         else{

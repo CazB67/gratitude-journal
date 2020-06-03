@@ -61,7 +61,7 @@ exports.submitted = function (req, res) {
 
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
-    if (user) 
+    if (user) {
       res.status(202).json({ success: false, message: "That email is already taken" });
       return;
       //res.status(401).json({err:"That email is already taken"});
