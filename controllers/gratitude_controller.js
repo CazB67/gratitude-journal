@@ -48,15 +48,27 @@ exports.viewGratitude = function (req, res) {
 
 //Post to insert gratitude to database
 exports.submitted = function (req, res) {
-  db.Gratitude.create({
-    description: req.body.description,
-    action: req.body.action,
-    shareable: req.body.shareable,
-    UserId: req.user.id
-  })
-    .then(function (dbGratitude) {
-      res.json(dbGratitude);
-    });
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  console.log(date);
+  db.Gratitude.findOne({where: { userId: req.user.id, createdAt: date }}).then(function (gratitude){
+    if (gratitude){
+      console.log("There is already a gratitude posted for today");
+      res.status(403).json({ success: false, msg: "You've already made a post today" });
+    } else {
+      db.Gratitude.create({
+        description: req.body.description,
+        action: req.body.action,
+        shareable: req.body.shareable,
+        UserId: req.user.id
+      })
+        .then(function (dbGratitude) {
+          res.json(dbGratitude);
+        });
+    }
+
+  });
+  
 };
 
 exports.apiSignup = function (req, res, done) {
