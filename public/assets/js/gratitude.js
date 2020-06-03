@@ -59,8 +59,9 @@ $(document).ready(function () {
    $("#logout-button").click(function () {
       $.post("/api/logout")
          .then(function (res) {
-           console.log("response to logout" + res);
+           //console.log("response to logout" + res);
            window.location.replace("/");
+           $("#id").text(res);
          })
          .catch(function (err) {
            console.log(err);
@@ -108,7 +109,7 @@ $(document).ready(function () {
          action: action,
          shareable: shareable
       }).then(function () {
-         console.log(description);
+         console.log("Data saved on DB:" + description);
          window.location.replace("/viewGratitude");
       }).catch(function (err) {
          console.log(err);
@@ -124,13 +125,13 @@ $(document).ready(function () {
    //On calendar click of date send date to server and add response to specific parts of the html 
    function showGratitude(createdAt) {
       //Date clicked displayed in correct order
+      console.log("date chosen:" + createdAt);
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
-      console.log(createdAt);
       $.post("/api/searched", {
          createdAt: createdAt
       }).then(function (res) {
-         console.log(res);
+         console.log("gratitude found based on date from server: " + res);
          if (res == null) {
             $("#search-action").text("No act of kindness written on this day");
             $("#search-gratitude").text("No gratitude written on this day");
