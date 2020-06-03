@@ -1,23 +1,19 @@
-require('dotenv').config()  //yes
-const db = require("./models");  //yes
+require('dotenv').config()  
+const db = require("./models");  
 // Requiring necessary npm packages
-const express = require("express"); //yes
-const app = express();   //yes
-const passport = require('passport'); //yes
+const express = require("express"); 
+const app = express();   
+const passport = require('passport'); 
 const router = require("./routes/router");
 require('./config/passport');
-const expressSession = require("express-session"); //yes
-const SessionStore = require('express-session-sequelize')(expressSession.Store); //yes
-const cookieParser = require('cookie-parser'); //change
-//const Sequelize = require('sequelize') //change
-//let FacebookStrategy = require('passport-facebook').Strategy
-// Requiring passport as we've configured it
-//const passport = require("./config/passport");
+const expressSession = require("express-session"); 
+const SessionStore = require('express-session-sequelize')(expressSession.Store); 
+const cookieParser = require('cookie-parser'); 
+
 const exphbs = require("express-handlebars");
-// Setting up port and requiring models for syncing
-// eslint-disable-next-line no-undef
+
 const PORT = process.env.PORT || 8080;
-// Creating express app and configuring middleware needed for authentication
+
 
 
 app.use(cookieParser());  
@@ -44,9 +40,7 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Requiring our routes
-//require("./routes/html-routes.js")(app);
-//require("./routes/api-routes.js")(app);
+
 app.use(router);
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({ force: true } ).then(function() {

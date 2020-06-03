@@ -9,8 +9,5 @@ module.exports.isAuth = (req, res, next) =>  {
         return res.redirect("/");
     }
   }
-  
     // If the user isn't logged in, redirect them to the login page
     
-  //};
-  
