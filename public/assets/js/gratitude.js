@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-$(document).ready(function () {
+$(window).on('load',function () {
    let data;
    let i = 0;
    //Ajax call to quotes API
@@ -32,6 +32,10 @@ $(document).ready(function () {
       setInterval(updateTime, 10000);
    });
    
+   var d = moment();
+   var date = d.format("YYYY-MM-DD");
+   console.log(date);
+   showGratitude(date);
    //Sets the date, updates the quote every minute
    
 
@@ -89,17 +93,19 @@ $(document).ready(function () {
    //On click function to get input
    gratitudeForm.on("click", function(event) {
       event.preventDefault();
-      toastr.info('Gratitude saved for today', {timeOut:300});
+      
       let gratitudeData = {
          description: gratitudeInput.val().trim(),
          action: actionInput.val().trim(),
          shareable: shareGratitudes.prop("checked")
       };
       if(gratitudeData.description === ""){
-         console.log("You need to add a gratitude");
+         //console.log("You need to add a gratitude");
+         toastr.warning("You need to add a gratitude", {timeOut:300})
          return;
       }else if (gratitudeData.action === ""){
          console.log("Add an act or type none");
+         toastr.warning("Add an act or type none", {timeOut:300})
          return;
       }else{
          saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
@@ -127,6 +133,7 @@ $(document).ready(function () {
    $(".calendar").on("calendar-select", function () {
       
       showGratitude(my_calendar.getSelected());
+      console.log(my_calendar.getSelected());
    })
 
    //On calendar click of date send date to server and add response to specific parts of the html 
@@ -150,5 +157,6 @@ $(document).ready(function () {
          console.log(err);
       });
    }
+   
 });
 
