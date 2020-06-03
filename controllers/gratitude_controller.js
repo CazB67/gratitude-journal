@@ -77,7 +77,8 @@ exports.apiSignup = function (req, res, done) {
           // Return the success of the insert.....
          // res.status(202).json({ success: true, message: "Giddy Up" });
           // Then redirecct to the login api. 
-          res.redirect(307, "/api/login");
+          console.log("user created on line 80 contoller.js")
+          res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
           //console.log(data)
          //res.redirect("/newGratitude");
 
