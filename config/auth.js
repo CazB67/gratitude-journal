@@ -1,7 +1,5 @@
 module.exports = {
     'facebookAuth' : {
-        'clientID' : 'xxx',
-        'clientSecret': 'xxx',
-        'callbackURL': 'http://localhost:8080/auth/facebook/callback'
+        'callbackURL': 'https://safe-dawn-22162.herokuapp.com//auth/facebook/callback'
     }
 }
