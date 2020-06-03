@@ -6,7 +6,8 @@ exports = module.exports
 //-------
 exports.root = function (req, res) {
   db.Gratitude.findAll({
-    limit: 10,   //R?
+    limit: 20,
+
     where: {
       shareable: true,
     },
@@ -32,7 +33,8 @@ exports.searched = function (req, res) {
   console.log(req.body.createdAt);
   db.Gratitude.findOne({
     where: {
-      createdAt: { [Op.startsWith]: req.body.createdAt }
+      createdAt: { [Op.startsWith]: req.body.createdAt },
+      UserId: req.user.id
     }
   }).then(function (dbGratitude) {
     console.log(dbGratitude);
@@ -49,30 +51,33 @@ exports.submitted = function (req, res) {
   db.Gratitude.create({
     description: req.body.description,
     action: req.body.action,
-    shareable: req.body.shareable
+    shareable: req.body.shareable,
+    UserId: req.user.id
   })
     .then(function (dbGratitude) {
       res.json(dbGratitude);
     });
 };
-      
+
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
     if (user) {
       console.log("found issue")
       res.status(401).json({ success: false, msg: "That email is already taken" });
+      return;
       //res.status(401).json({err:"That email is already taken"});
       //return done(null, false, { message: 'That email is already taken' });
-    }
-    else {
+    }});
+    //else {
       db.User.create({    //no error in the operation, user didn't exist and user created
         email: req.body.email,
         password: req.body.password
       })
         .then(function () {
-          return done(null, false, {    //no error in the operation, but user exists and can't create
-            message: "User duplicate!"
-          });
+          res.redirect(307, "/api/login");
+          //console.log(data)
+         // res.redirect("/newGratitude");
+
         })
         .catch(function (err) {
           console.log(err)
@@ -80,8 +85,8 @@ exports.apiSignup = function (req, res, done) {
             message: "Error in db operation!"
           });
         });
-    }
-  });
+   // }
+  //});
 };
 
 // Route for logging user out

@@ -1,3 +1,6 @@
+
+
+/* eslint-disable no-undef */
 $(document).ready(function () {
   // Getting references to our form and input
   var signUpForm = $("#signup-form");
@@ -29,14 +32,8 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function (res) {
-        if (res) {
-          console.log("signup success from frontend: response is:" + res)
+      .then(function () {
           window.location.replace("/newGratitude");
-        } else {
-          console.log(res);
-        }
-
         // If there's an error, log the error
       })
       .catch(handleLoginErr);
