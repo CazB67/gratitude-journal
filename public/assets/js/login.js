@@ -47,6 +47,6 @@ $(document).ready(function () {
   }
   function handleLoginErr(err) {
     console.log(err.message)
-    toastr.warning(err.message, {timeOut: 300});
+    toastr.warning("Error Logging in", {timeOut:300});
   }
 });
