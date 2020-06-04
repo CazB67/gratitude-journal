@@ -13,7 +13,6 @@ $(window).on('load',function () {
        
    }
    $.ajax(settings).then(function (response) {
-      console.log(response + "fgfggggggggggggggggggffg");
       data = JSON.parse(response);
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
@@ -32,17 +31,11 @@ $(window).on('load',function () {
       setInterval(updateTime, 10000);
    });
    
+   //Sets the default viewed gratitude as the current day
    let day = moment();
    let date = day.format("YYYY-MM-DD");
    console.log(date);
    showGratitude(date);
-   //Sets the date, updates the quote every minute
-   
-
-   //Adding modal functionality when facebook button is clicked
-   // $("#facebook-button").click(function () {
-   //    $(".facebook").addClass("is-active");
-   // });
 
    //Adding modal functionality when login button is clicked
    $("#login-button").click(function () {
@@ -157,6 +150,5 @@ $(window).on('load',function () {
          console.log(err);
       });
    }
-   
 });
 
