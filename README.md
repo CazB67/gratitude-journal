@@ -59,15 +59,18 @@ Wireframe URL is https://miro.com/app/board/o9J_ksdsbQw=/
 - passport
 - TavoCalendar - https://github.com/beinoriusju/TavoCalendar
 - Quotes Free API - https://www.freecodecamp.org/forum/t/free-api-inspirational-quotes-json-with-code-examples/311373
+- Toastr - https://github.com/CodeSeven/toastr
 
 ## Rough Breakdown of Tasks 
 - Front End (Vasavi, Caroline)
 - Backend (Nathan, Raed)
 
-## Bonus Features
+## Ideas for Future Development
 - Send a message to someone, to let them know you are thinking of them
 - Show streak eg "Wow! You have used this journal for 3 days straight."
 - An uplifting news story
+- Create an admin user that can delete users etc.
+- Update gratitude
 
 ## Credits
 - Team at UWA Coding Bootcamp
