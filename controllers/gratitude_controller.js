@@ -29,14 +29,12 @@ exports.newGratitude = function (req, res) {
 
 //Finds the gratitude in the database of the date clicked on calendar matching the current user
 exports.searched = function (req, res) {
-  console.log(req.body.createdAt);
   db.Gratitude.findOne({
     where: {
       createdAt: { [Op.startsWith]: req.body.createdAt },
       UserId: req.user.id
     }
   }).then(function (dbGratitude) {
-    console.log(dbGratitude);
     res.json(dbGratitude);
   })
 };

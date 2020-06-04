@@ -16,12 +16,13 @@ $(window).on('load',function () {
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
-   }).then(function () {
+   });
+   
       const updateTime = function () {
          $("#date").text(moment().format('dddd, MMMM Do YYYY'));
       }
       setInterval(updateTime, 1000);
-   });
+
    
    //Sets the default viewed gratitude as the current day
    let day = moment();
@@ -87,7 +88,7 @@ $(window).on('load',function () {
          toastr.warning("You need to add a gratitude", {timeOut:300})
          return;
       }else if (gratitudeData.action === ""){
-         toastr.warning("Add an act or type none", {timeOut:300})
+         toastr.warning("Add an act of kindness or type 'none'", {timeOut:300})
          return;
       }else{
          saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
@@ -118,6 +119,10 @@ $(window).on('load',function () {
 
    //On calendar click of date send date to server and add response to specific parts of the html 
    function showGratitude(createdAt) {
+      //500 error on slash
+      if(window.location.href[window.location.href.length -1] === '/') {
+         return;
+      }
       //Date clicked displayed in correct order
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
