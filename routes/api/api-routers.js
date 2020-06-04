@@ -6,9 +6,6 @@ var gratitudeController = require('../../controllers/gratitude_controller');
 router.post("/api/searched", gratitudeController.searched)
 router.post("/api/submitted", gratitudeController.submitted)
 // Using the passport.authenticate middleware with our local strategy.
-// If the user has valid login credentials, send them to the members page.
-// Otherwise the user will be sent an error
-//router.post("/api/login", passport.authenticate("local", { failureRedirect: '/', successRedirect: '/newgratitude' }));
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
   res.json(req.user);
 });

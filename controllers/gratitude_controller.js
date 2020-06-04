@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 exports = module.exports
 
-//-------
+//Selects all the gratitudes that have been shared by the user. Ordered by ID from most recent
 exports.root = function (req, res) {
   db.Gratitude.findAll({
     limit: 20,
@@ -11,7 +11,7 @@ exports.root = function (req, res) {
     where: {
       shareable: true,
     },
-    order: [['id', 'DESC']]  //R?
+    order: [['id', 'DESC']]  
   }).then(function (results) {
     let data = results.map((result) => {
       return { description: result.description }
@@ -19,8 +19,6 @@ exports.root = function (req, res) {
     let hbsObject = {
       results: data
     };
-    console.log("line21 in controller")
-    console.log(hbsObject);
     res.render("login", hbsObject);
   })
 };
@@ -29,6 +27,7 @@ exports.newGratitude = function (req, res) {
   res.render("newGratitude");
 };
 
+//Finds the gratitude in the database of the date clicked on calendar matching the current user
 exports.searched = function (req, res) {
   console.log(req.body.createdAt);
   db.Gratitude.findOne({
@@ -46,7 +45,7 @@ exports.viewGratitude = function (req, res) {
   res.render("viewGratitude");
 };
 
-//Post to insert gratitude to database
+//Post to insert gratitude to database. Only one gratitude per date
 exports.submitted = function (req, res) {
   let today = new Date();
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -66,40 +65,28 @@ exports.submitted = function (req, res) {
           res.json(dbGratitude);
         });
     }
-
   });
-  
 };
+
 
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
     if (user) {
       res.status(202).json({ success: false, message: "That email is already taken" });
       return;
-      //res.status(401).json({err:"That email is already taken"});
-      //return done(null, false, { message: 'That email is already taken' });
     }
   });
-    //else {
       db.User.create({    //no error in the operation, user didn't exist and user created
         email: req.body.email,
         password: req.body.password
       })
         .then(function () {
-          // Return the success of the insert.....
-         // res.status(202).json({ success: true, message: "Giddy Up" });
-          // Then redirecct to the login api. 
-          console.log("user created on line 80 contoller.js")
           res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
-          //console.log(data)
-         //res.redirect("/newGratitude");
 
         })
         .catch(function (err) {
           return done(null, false, { Message: "Error in db operation!" });
         });
-   // }
-  //});
 };
 
 // Route for logging user out

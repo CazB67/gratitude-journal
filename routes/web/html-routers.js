@@ -7,5 +7,4 @@ router.get("/", gratitudeController.root)
 router.get("/newgratitude", isAuth, gratitudeController.newGratitude)
 router.get("/viewgratitude", isAuth, gratitudeController.viewGratitude)
 
-
 module.exports = router;
