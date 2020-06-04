@@ -138,7 +138,6 @@ $(window).on('load',function () {
       $.post("/api/searched", {
          createdAt: createdAt
       }).then(function (res) {
-         console.log(res);
          if (res == null) {
             $("#search-action").text("No act of kindness written on this day");
             $("#search-gratitude").text("No gratitude written on this day");
