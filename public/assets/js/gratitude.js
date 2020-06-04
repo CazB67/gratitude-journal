@@ -94,18 +94,18 @@ $(window).on('load',function () {
          toastr.warning("Add an act of kindness or type 'none'", {timeOut:300})
          return;
       }else{
-         saveGratitude(gratitudeData.description, gratitudeData.action, gratitudeData.shareable);
+         saveGratitude(gratitudeData);
          gratitudeInput.val(""); //Clear input
          actionInput.val("");
       }
    });
 
    //Send description, action and shareable input to the server
-   function saveGratitude(description, action, shareable) {
+   function saveGratitude(gratitudeData) {
       $.post("/api/submitted", {
-         description: description,
-         action: action,
-         shareable: shareable
+         description: gratitudeData.description,
+         action: gratitudeData.action,
+         shareable: gratitudeData.shareable
       }).then(function () {
          window.location.replace("/viewGratitude");
       }).catch(function (err) {
