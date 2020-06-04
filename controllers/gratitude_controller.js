@@ -57,7 +57,7 @@ exports.submitted = function (req, res) {
         description: req.body.description,
         action: req.body.action,
         shareable: req.body.shareable,
-        UserId: req.user.id
+        userId: req.user.id
       })
         .then(function (dbGratitude) {
           res.json(dbGratitude);
