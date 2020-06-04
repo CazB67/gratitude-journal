@@ -16,18 +16,11 @@ $(window).on('load',function () {
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
-   }).then(function (data) {
+   }).then(function () {
       const updateTime = function () {
          $("#date").text(moment().format('dddd, MMMM Do YYYY'));
-         console.log(data[i].text);
-         $(".quote").text(data[i].text);
-         $(".quote-author").text("- " + data[i].author);
-         i++;
-         if (i === data.length) {
-            i = 0;
-         }
       }
-      setInterval(updateTime, 10000);
+      setInterval(updateTime, 1000);
    });
    
    //Sets the default viewed gratitude as the current day
