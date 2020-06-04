@@ -126,7 +126,7 @@ $(window).on('load',function () {
       if(window.location.href[window.location.href.length -1] === '/') {
          return;
       }
-
+      
       //Date clicked displayed in correct order
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
