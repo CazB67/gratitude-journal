@@ -6,7 +6,7 @@ $(window).on('load',function () {
    const settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes",
+      "url": "https://type.fit/api/quotes",
       "method": "GET"
 
    }
