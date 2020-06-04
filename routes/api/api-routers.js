@@ -23,7 +23,7 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 // authentication has failed.
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/viewgratitude',
+    successRedirect: '/newgratitude',
     failureRedirect: '/'
   }));
 
