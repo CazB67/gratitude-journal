@@ -8,22 +8,24 @@ $(window).on('load',function () {
       "crossDomain": true,
       "url": "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes",
       "method": "GET"
-
    }
+
    $.ajax(settings).then(function (response) {
       data = response
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
       $(".quote-author").text("- " + data[i].author);
-   });
+   }).fail(function (err) {
+      console.log(err);
+      toastr.error('Error retrieving quotes API', {timeOut:300})
+    });
    
-      const updateTime = function () {
-         $("#date").text(moment().format('dddd, MMMM Do YYYY'));
-      }
-      setInterval(updateTime, 1000);
+   const updateTime = function () {
+      $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+   }
+   setInterval(updateTime, 1000);
 
-   
    //Sets the default viewed gratitude as the current day
    let day = moment();
    let date = day.format("YYYY-MM-DD");
@@ -59,6 +61,7 @@ $(window).on('load',function () {
          })
          .catch(function (err) {
            console.log(err);
+           toastr.error('Error logging out!', {timeOut:300})
          });
    });
 
@@ -103,7 +106,7 @@ $(window).on('load',function () {
          description: description,
          action: action,
          shareable: shareable
-      }).then(function (res) {
+      }).then(function () {
          window.location.replace("/viewGratitude");
       }).catch(function (err) {
          console.log(err);
@@ -123,21 +126,27 @@ $(window).on('load',function () {
       if(window.location.href[window.location.href.length -1] === '/') {
          return;
       }
+
       //Date clicked displayed in correct order
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
+
+      //Searching for date clicked in database createdAt column.
       $.post("/api/searched", {
          createdAt: createdAt
       }).then(function (res) {
+         //No gratitudes saved on day (createdAt)
          if (res == null) {
             $("#search-action").text("No act of kindness written on this day");
             $("#search-gratitude").text("No gratitude written on this day");
+         //Brings up saved gratitude ofr particular date
          } else {
             $("#search-gratitude").text(res.description);
             $("#search-action").text(res.action);
          }
       }).catch(function (err) {
          console.log(err);
+         toastr.error('Error retrieving gratitudes', {timeOut:300})
       });
    }
 });
