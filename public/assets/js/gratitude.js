@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-
 $(window).on('load',function () {
    let data;
    let i = 0;
@@ -7,10 +6,8 @@ $(window).on('load',function () {
    const settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://type.fit/api/quotes",
-      "method": "GET",
-      dataType: "json"
-       
+      "url": "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes",
+      "method": "GET"
    }
    $.ajax(settings).then(function (response) {
       data = JSON.parse(response);
@@ -34,7 +31,6 @@ $(window).on('load',function () {
    //Sets the default viewed gratitude as the current day
    let day = moment();
    let date = day.format("YYYY-MM-DD");
-   console.log(date);
    showGratitude(date);
 
    //Adding modal functionality when login button is clicked
@@ -93,11 +89,9 @@ $(window).on('load',function () {
          shareable: shareGratitudes.prop("checked")
       };
       if(gratitudeData.description === ""){
-         //console.log("You need to add a gratitude");
          toastr.warning("You need to add a gratitude", {timeOut:300})
          return;
       }else if (gratitudeData.action === ""){
-         console.log("Add an act or type none");
          toastr.warning("Add an act or type none", {timeOut:300})
          return;
       }else{
@@ -124,9 +118,7 @@ $(window).on('load',function () {
    //Calendar function need user authentication details to complete
    const my_calendar = new TavoCalendar(".calendar");
    $(".calendar").on("calendar-select", function () {
-      
       showGratitude(my_calendar.getSelected());
-      console.log(my_calendar.getSelected());
    })
 
    //On calendar click of date send date to server and add response to specific parts of the html 
@@ -134,7 +126,6 @@ $(window).on('load',function () {
       //Date clicked displayed in correct order
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
-      console.log(createdAt);
       $.post("/api/searched", {
          createdAt: createdAt
       }).then(function (res) {
