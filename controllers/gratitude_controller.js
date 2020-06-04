@@ -49,7 +49,7 @@ exports.submitted = function (req, res) {
   console.log(date);
   db.Gratitude.findOne({where: { userId: req.user.id, createdAt: date }}).then(function (gratitude){
     if (gratitude){
-      console.log("There is already a gratitude posted for today");
+      res.status(403).json({ success: false, msg: "You've already made a post today" });
     } else {
       db.Gratitude.create({
         description: req.body.description,
