@@ -49,8 +49,8 @@ const customFields =
   }
 //------------------------------------------------------------
 passport.use(new FacebookStrategy({
-  clientID: process.env.clientID,
-  clientSecret: process.env.clientSecret,
+  clientID: configAuth.facebookAuth.clientID,
+  clientSecret: configAuth.facebookAuth.clientSecret,
   callbackURL: configAuth.facebookAuth.callbackURL,
   profileFields: ['name', 'email', 'link', 'locale', 'timezone', 'gender'],
   passReqToCallback: true,
