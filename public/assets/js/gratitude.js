@@ -103,11 +103,11 @@ $(window).on('load',function () {
          description: description,
          action: action,
          shareable: shareable
-      }).then(function () {
-         console.log(description);
+      }).then(function (res) {
          window.location.replace("/viewGratitude");
       }).catch(function (err) {
          console.log(err);
+         toastr.warning(err.responseJSON.msg, {timeOut:300})
       });
    }
 
