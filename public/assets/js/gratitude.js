@@ -8,9 +8,10 @@ $(window).on('load',function () {
       "crossDomain": true,
       "url": "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes",
       "method": "GET"
+
    }
    $.ajax(settings).then(function (response) {
-      data = JSON.parse(response);
+      data = response
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
@@ -18,6 +19,7 @@ $(window).on('load',function () {
    }).then(function (data) {
       const updateTime = function () {
          $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+         console.log(data[i].text);
          $(".quote").text(data[i].text);
          $(".quote-author").text("- " + data[i].author);
          i++;
