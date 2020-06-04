@@ -7,11 +7,10 @@ exports = module.exports
 exports.root = function (req, res) {
   db.Gratitude.findAll({
     limit: 20,
-
     where: {
       shareable: true,
     },
-    order: [['id', 'DESC']]  
+      order: [['id', 'DESC']]  
   }).then(function (results) {
     let data = results.map((result) => {
       return { description: result.description }
@@ -56,7 +55,7 @@ exports.submitted = function (req, res) {
         description: req.body.description,
         action: req.body.action,
         shareable: req.body.shareable,
-        userId: req.user.id
+        UserId: req.user.id
       })
         .then(function (dbGratitude) {
           res.json(dbGratitude);
@@ -106,5 +105,3 @@ exports.apiUserData = function (req, res) {
     });
   }
 };
-
-
