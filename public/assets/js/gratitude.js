@@ -32,6 +32,11 @@ $(document).ready(function () {
       setInterval(updateTime, 10000);
    });
    
+   let day = moment();
+   let date = day.format("YYYY-MM-DD");
+   console.log(date);
+   showGratitude(date);
+
    //Sets the date, updates the quote every minute
    
 
