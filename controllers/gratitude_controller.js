@@ -64,7 +64,6 @@ exports.submitted = function (req, res) {
   });
 };
 
-
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
     if (user) {
@@ -78,7 +77,6 @@ exports.apiSignup = function (req, res, done) {
       })
         .then(function () {
           res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
-
         })
         .catch(function (err) {
           return done(null, false, { Message: "Error in db operation!" });
@@ -108,7 +106,6 @@ exports.apiUserData = function (req, res) {
 
 //Gets all the gratitudes from database where the userid matches the user currently logged in
 exports.countGratitudes = function (req, res) {
-  console.log(req.user);
   db.Gratitude.findAndCountAll({ where: { UserId: req.user.id } 
   })
   .then(result => {
