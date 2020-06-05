@@ -79,6 +79,7 @@ exports.apiSignup = function (req, res, done) {
           res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
         })
         .catch(function (err) {
+          console.log(err);
           return done(null, false, { Message: "Error in db operation!" });
         });
 };
