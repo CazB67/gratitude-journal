@@ -1,5 +1,4 @@
-
-var bcrypt = require("bcryptjs");
+let bcrypt = require("bcryptjs");
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define("User", {
     facebookId: {
