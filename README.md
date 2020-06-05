@@ -49,7 +49,7 @@ Run `npm start`
 ## Usage
 * The URL of the deployed application is https://safe-dawn-22162.herokuapp.com/
 
-* The URL of the GitHub repository is https://github.com/CazB67/https://github.com/CazB67/gratitude-journal
+* The URL of the GitHub repository is https://github.com/CazB67/gratitude-journal
 
 The following GIF shows the application's functionality and how to use. 
 
