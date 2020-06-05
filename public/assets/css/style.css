@@ -26,6 +26,14 @@
     font-style: italic;
   }
 
+  .count-gratitudes {
+    text-align: center;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: hsl(204, 86%, 53%);
+  }
+
   .quote-author {
     text-align: center;
     font-style: italic;
@@ -64,3 +72,5 @@
     justify-content: center;
     margin-bottom: 1em;
   }
+
+  

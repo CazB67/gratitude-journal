@@ -30,6 +30,7 @@ $(window).on('load',function () {
    let day = moment();
    let date = day.format("YYYY-MM-DD");
    showGratitude(date);
+   countGratitudes();
 
    //Adding modal functionality when login button is clicked
    $("#login-button").click(function () {
@@ -111,6 +112,18 @@ $(window).on('load',function () {
       }).catch(function (err) {
          console.log(err);
          toastr.warning(err.responseJSON.msg, {timeOut:300})
+      });
+   }
+
+   //If not on login page render count to viewgratitudes page
+   function countGratitudes() {
+      if(window.location.href[window.location.href.length -1] === '/') {
+         return;
+      }
+      $.get("/api/count", function(data){
+        console.log(data);
+      }).then(function (res) {
+         $(".count").text(res);
       });
    }
 

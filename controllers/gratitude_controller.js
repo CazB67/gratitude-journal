@@ -105,3 +105,13 @@ exports.apiUserData = function (req, res) {
     });
   }
 };
+
+//Gets all the gratitudes from database where the userid matches the user currently logged in
+exports.countGratitudes = function (req, res) {
+  console.log(req.user);
+  db.Gratitude.findAndCountAll({ where: { UserId: req.user.id } 
+  })
+  .then(result => {
+    res.json(result.count);
+  });
+};
