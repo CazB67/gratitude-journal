@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(window).on('load',function () {
 	let data;
 	let i = 0;
