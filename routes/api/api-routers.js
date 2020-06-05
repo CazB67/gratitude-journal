@@ -1,7 +1,7 @@
 let express = require("express");
 const router = express.Router();
 let passport = require("../../config/passport");
-var gratitudeController = require('../../controllers/gratitude_controller');
+let gratitudeController = require('../../controllers/gratitude_controller'); 
 
 router.post("/api/searched", gratitudeController.searched)
 router.post("/api/submitted", gratitudeController.submitted)
@@ -26,6 +26,5 @@ router.get('/auth/facebook/callback',
     successRedirect: '/newgratitude',
     failureRedirect: '/'
   }));
-
 
 module.exports = router;

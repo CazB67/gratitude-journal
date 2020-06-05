@@ -31,8 +31,10 @@ $(document).ready(function () {
       password: password
     })
       .then(function (res) {
+
        
         //console.log("=============" + res);
+
         if (res) {
           window.location.replace("/newGratitude");
           toastr.success('Logged in succesfully', {timeOut: 300});

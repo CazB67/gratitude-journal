@@ -76,7 +76,6 @@ exports.submitted = function (req, res) {
   });
 };
 
-
 exports.apiSignup = function (req, res, done) {
   db.User.findOne({ where: { email: req.body.email } }).then(function (user) {
     if (user) {
@@ -90,9 +89,9 @@ exports.apiSignup = function (req, res, done) {
       })
         .then(function () {
           res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
-
         })
         .catch(function (err) {
+          console.log(err);
           return done(null, false, { Message: "Error in db operation!" });
         });
 };
