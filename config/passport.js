@@ -7,7 +7,6 @@ const passport = require("passport");//passport frame work which is a milldeware
 // Setting up port and requiring models for syncing
 let LocalStrategy = require("passport-local").Strategy;
 let db = require("../models");
-let configAuth = require('./auth')
 let FacebookStrategy = require('passport-facebook').Strategy
 // Our user will sign in using an email, rather than a "username"
 const customFields =
@@ -51,20 +50,14 @@ const customFields =
 passport.use(new FacebookStrategy({
   clientID: process.env.clientID,
   clientSecret: process.env.clientSecret,
-  callbackURL: configAuth.facebookAuth.callbackURL,
+  callbackURL: process.env.callbackURL,
   profileFields: ['name', 'email', 'link', 'locale', 'timezone', 'gender'],
   passReqToCallback: true,
   //passResToCallback: true
 },
   function (req, accessToken, refreshToken, profile, done) {
     console.log("-----")
-    // console.log(req.body)
-    // console.log({ profile })
-    // console.log(profile.id)
-    // console.log(accessToken)
-    // console.log(profile._json.email)
-    // console.log(profile.name.givenName + ' ' + profile.name.familyName)
-    // console.log("-----")
+
     db.User.findOne({ where: { 'facebookId': profile.id } }).then(function (user) {
   
       if (user) {
@@ -101,7 +94,6 @@ passport.use(new FacebookStrategy({
   }
 ));
 //------------------------------------------------------------
-
 
 const strategy = new LocalStrategy(customFields, verifyCallback);
 

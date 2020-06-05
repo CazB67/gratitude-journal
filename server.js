@@ -9,12 +9,8 @@ require('./config/passport');
 const expressSession = require("express-session"); 
 const SessionStore = require('express-session-sequelize')(expressSession.Store); 
 const cookieParser = require('cookie-parser'); 
-
 const exphbs = require("express-handlebars");
-
 const PORT = process.env.PORT || 8080;
-
-
 
 app.use(cookieParser());  
 app.use(express.urlencoded({ extended: true }));
