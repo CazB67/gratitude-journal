@@ -44,13 +44,25 @@ exports.viewGratitude = function (req, res) {
 
 //Post to insert gratitude to database. Only one gratitude per date
 exports.submitted = function (req, res) {
+  let editFlag = req.body.editFlag
   let today = new Date();
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  console.log(date);
-  db.Gratitude.findOne({where: { userId: req.user.id, createdAt: date }}).then(function (gratitude){
-    if (gratitude){
-      res.status(403).json({ success: false, msg: "You've already made a post today" });
-    } else {
+  db.Gratitude.findOne({where: { UserId: req.user.id, createdAt: date }}).then(function (gratitude){
+    // if (gratitude && req.body.editFlag===false){
+    //   res.status(403).json({ success: false, msg: "You've already made a post today" });
+    // } 
+    if (editFlag==="true") { 
+      db.Gratitude.update({
+        description: req.body.description,
+        action: req.body.action,
+        shareable: req.body.shareable,
+        UserId: req.user.id
+      }, {where: { UserId: req.user.id, createdAt: date }})
+        .then(function (dbGratitude) {
+          res.json(dbGratitude);
+        });
+     } 
+     if (editFlag==="false") {
       db.Gratitude.create({
         description: req.body.description,
         action: req.body.action,

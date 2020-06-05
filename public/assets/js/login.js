@@ -31,13 +31,16 @@ $(document).ready(function () {
       password: password
     })
       .then(function (res) {
-        console.log("=============" + res);
+
+       
+        //console.log("=============" + res);
+
         if (res) {
           window.location.replace("/newGratitude");
           toastr.success('Logged in succesfully', {timeOut: 300});
         } else {
           handleLoginErr(res);
-          console.log(res);
+          //console.log(res);
         }
 
         // If there's an error, log the error
@@ -45,7 +48,7 @@ $(document).ready(function () {
       .catch(handleLoginErr);
   }
   function handleLoginErr(err) {
-    console.log(err.message)
+    //console.log(err.message)
     toastr.warning("Error Logging in", {timeOut:300});
   }
 });
