@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 $(document).ready(function () {
   // Getting references to our form and inputs
   const loginForm = $("#login-form");
@@ -31,7 +30,6 @@ $(document).ready(function () {
       password: password
     })
       .then(function (res) {
-       
         console.log("=============" + res);
         if (res) {
           window.location.replace("/newGratitude");

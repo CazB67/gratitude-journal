@@ -75,14 +75,12 @@ passport.use(new FacebookStrategy({
             console.log('created user');
             console.log({ user })
             return done(null, user)
-            // res.redirect(307, "/api/login");
+            
           })
           .catch(function (err) {
             console.log(err)
             console.log('errorrrr');
             return done(err, null)
-            // res.status(401).json(err);
-            //res.redirect("/"); 
 
           });
         console.log('nowhere');
@@ -93,7 +91,6 @@ passport.use(new FacebookStrategy({
     }) 
   }
 ));
-//------------------------------------------------------------
 
 const strategy = new LocalStrategy(customFields, verifyCallback);
 
