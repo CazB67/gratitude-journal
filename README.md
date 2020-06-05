@@ -38,10 +38,22 @@ Wireframe URL is https://miro.com/app/board/o9J_ksdsbQw=/
 
 ## Installation
 
+Run `npm install`
+
+Add MySql password to a `.env` file eg PASSWORD="xxx"
+
+If wanting to run facebook auth create an app at `https://developers.facebook.com/` and put the App ID, App Secret and callback URL in the `.env`. Check that App ID, App Secret and callback URL environmental variable names match in `passport.js`.
+
+Run `npm start`
+
 ## Usage
 * The URL of the deployed application is https://safe-dawn-22162.herokuapp.com/
 
 * The URL of the GitHub repository is https://github.com/CazB67/https://github.com/CazB67/gratitude-journal
+
+The following GIF shows the application's functionality and how to use. 
+
+<img src="public/assets/img/journal.gif" width="451" height="423" title="Gratitude Journal App">
 
 ## Technologies
 - express
