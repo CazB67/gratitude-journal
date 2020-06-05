@@ -27,7 +27,7 @@ const customFields =
       if (!dbUser) {
         console.log("1")
         return done(null, false, {    //no error in the operation but this is also not a user
-          message: "Incorrect email."       
+          message: "Incorrect email."
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect
@@ -38,7 +38,7 @@ const customFields =
         });
       }
       // If none of the above, return the user  
-      console.log("3")   
+      console.log("3")
       return done(null, dbUser);  //we say no error and return the authenticated user and continues to the route
     })
       .catch((err) => {
@@ -56,10 +56,7 @@ passport.use(new FacebookStrategy({
   //passResToCallback: true
 },
   function (req, accessToken, refreshToken, profile, done) {
-    console.log("-----")
-
     db.User.findOne({ where: { 'facebookId': profile.id } }).then(function (user) {
-  
       if (user) {
         console.log('existing user');
         return done(null, user);  //user authenticated by FB and found in local database
@@ -73,24 +70,22 @@ passport.use(new FacebookStrategy({
         })
           .then(function (user) {
             console.log('created user');
-            console.log({ user })
             return done(null, user)
             // res.redirect(307, "/api/login");
           })
           .catch(function (err) {
             console.log(err)
-            console.log('errorrrr');
             return done(err, null)
             // res.status(401).json(err);
             //res.redirect("/"); 
 
           });
-        console.log('nowhere');
-        console.log(profile);
+        //console.log('nowhere');
+        //console.log(profile);
       }
     }).catch(err => {
       done(err)
-    }) 
+    })
   }
 ));
 //------------------------------------------------------------

@@ -22,7 +22,7 @@ $(window).on('load',function () {
     });
    
    const updateTime = function () {
-      $("#date").text(moment().format('dddd, MMMM Do YYYY'));
+      $("#date").text(day.format('dddd, MMMM Do YYYY'));
    }
    setInterval(updateTime, 1000);
 
@@ -56,12 +56,12 @@ $(window).on('load',function () {
    $("#logout-button").click(function () {
       $.post("/api/logout")
          .then(function (res) {
-           console.log("response to logout" + res);
+         //   console.log("response to logout" + res);
            window.location.replace("/");
            toastr.info('Logged out successfully', {timeOut:300})
          })
          .catch(function (err) {
-           console.log(err);
+         //   console.log(err);
            toastr.error('Error logging out!', {timeOut:300})
          });
    });
@@ -76,18 +76,36 @@ $(window).on('load',function () {
 
    //Grabbing save button and input text from html
    const gratitudeForm = $("#save-button");
+   const gratitudeFormEdit = $("#edit-button");
    const gratitudeInput = $("#gratitude-input");
    const actionInput = $("#action-input");
    const shareGratitudes = $("#checkbox");
    //On click function to get input
-   gratitudeForm.on("click", function(event) {
+   // gratitudeForm.on("click", newToServer) 
+   // gratitudeFormEdit.on("click", editToServer) 
+   let edit
+   const editToServer = (event) => {
       event.preventDefault();
-      
+      edit = true;
+      saveToserver(edit)
+   };
+
+   const newToServer = (event) => {
+      event.preventDefault();
+      console.log("newtoserver")
+      edit = false;
+      saveToserver(edit)
+   };
+
+   function saveToserver(edit) {
+      //console.log(edit)
       let gratitudeData = {
          description: gratitudeInput.val().trim(),
          action: actionInput.val().trim(),
-         shareable: shareGratitudes.prop("checked")
+         shareable: shareGratitudes.prop("checked"),
+         editFlag: edit
       };
+      //console.log(gratitudeData)
       if(gratitudeData.description === ""){
          toastr.warning("You need to add a gratitude", {timeOut:300})
          return;
@@ -99,18 +117,23 @@ $(window).on('load',function () {
          gratitudeInput.val(""); //Clear input
          actionInput.val("");
       }
-   });
+   }
+
+   gratitudeForm.on("click", newToServer) 
+   gratitudeFormEdit.on("click", editToServer) 
 
    //Send description, action and shareable input to the server
    function saveGratitude(gratitudeData) {
       $.post("/api/submitted", {
          description: gratitudeData.description,
          action: gratitudeData.action,
-         shareable: gratitudeData.shareable
+         shareable: gratitudeData.shareable,
+         editFlag: gratitudeData.editFlag
       }).then(function () {
          window.location.replace("/viewGratitude");
+         //console.log(gratitudeData)
       }).catch(function (err) {
-         console.log(err);
+         //console.log(err);
          toastr.warning(err.responseJSON.msg, {timeOut:300})
       });
    }
@@ -135,11 +158,15 @@ $(window).on('load',function () {
 
    //On calendar click of date send date to server and add response to specific parts of the html 
    function showGratitude(createdAt) {
+      if (createdAt !== date) {
+         $("#write-button").addClass("is-hidden");
+      } else {
+         $("#write-button").removeClass("is-hidden");
+      }
       //500 error on slash
       if(window.location.href[window.location.href.length -1] === '/') {
          return;
       }
-      
       //Date clicked displayed in correct order
       let clickedDate = createdAt.split("-");
       $("#search-date").text(clickedDate[2] + "-" + clickedDate[1] + "-" + clickedDate[0]);
@@ -149,16 +176,28 @@ $(window).on('load',function () {
          createdAt: createdAt
       }).then(function (res) {
          //No gratitudes saved on day (createdAt)
+         //console.log(res)
          if (res == null) {
             $("#search-action").text("No act of kindness written on this day");
             $("#search-gratitude").text("No gratitude written on this day");
+            //hide "save" button and replace with "edit" button
+            gratitudeFormEdit.addClass("is-hidden");
+            gratitudeForm.removeClass("is-hidden");
+            $("#write-button-text").text("New Gratitude")
          //Brings up saved gratitude ofr particular date
          } else {
             $("#search-gratitude").text(res.description);
             $("#search-action").text(res.action);
+            $("#write-button-text").text("Edit Gratitude")
+            gratitudeInput.text(res.description)
+            actionInput.text(res.action)
+            //hide "edit" button and add "save button"
+            gratitudeForm.addClass("is-hidden");
+            gratitudeFormEdit.removeClass("is-hidden");
+
          }
       }).catch(function (err) {
-         console.log(err);
+         //console.log(err);
          toastr.error('Error retrieving gratitudes', {timeOut:300})
       });
    }
