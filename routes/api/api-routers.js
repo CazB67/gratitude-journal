@@ -9,7 +9,7 @@ router.post("/api/submitted", gratitudeController.submitted)
 router.post("/api/login", passport.authenticate("local"), function(req, res) {
   res.json(req.user);
 });
-
+router.get("/api/count", gratitudeController.countGratitudes)
 router.post("/api/signup", gratitudeController.apiSignup);
 router.post("/api/logout", gratitudeController.logOut);
 router.post("/api/user_data", gratitudeController.apiUserData); //reservered and not used at this stage
