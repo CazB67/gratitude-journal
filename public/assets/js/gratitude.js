@@ -233,11 +233,8 @@ $(window).on('load',function () {
 		window.location.replace("/newGratitude");
 	});
 
-	//Grabbing save button and input text from html
-	const gratitudeForm = $("#save-button");
-	const gratitudeInput = $("#gratitude-input");
-	const actionInput = $("#action-input");
-	const shareGratitudes = $("#checkbox");
+	
+	
 	//On click function to get input
 	gratitudeForm.on("click", function(event) {
 		event.preventDefault();
@@ -286,13 +283,7 @@ $(window).on('load',function () {
 		}).catch(function (err) {
 			console.log(err);
 		});
-	}
-
-	//Calendar function need user authentication details to complete
-	const my_calendar = new TavoCalendar(".calendar");
-	$(".calendar").on("calendar-select", function () {
-		showGratitude(my_calendar.getSelected());
-	})
+	}	
 
 	//On calendar click of date send date to server and add response to specific parts of the html 
 	function showGratitude(createdAt) {
