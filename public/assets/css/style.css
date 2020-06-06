@@ -1,0 +1,76 @@
+
+  h1, .title, .subtitle {
+    font-family: 'Pacifico', cursive;
+    font-stretch: expanded;
+    margin-bottom: 0.2em;
+    margin-left: 0.3em;
+    font-weight: lighter;
+  }
+
+  .main  {
+    background-image: url("/assets/img/nature.jpg");
+    min-height: 450px;
+  }
+
+  .background {
+    background-color:whitesmoke;
+  }
+
+  .footer{
+    background-color: hsl(204, 86%, 53%);
+    padding: 0.5em;
+  }
+  .quote {
+    margin-top: 2em;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .count-gratitudes {
+    text-align: center;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: hsl(204, 86%, 53%);
+  }
+
+  .quote-author {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1em;
+    font-weight: bolder;
+  }
+
+  .field {
+    padding: 0.4em;
+  }
+
+  #search-gratitude {
+    margin-bottom: 3.5em;
+  }
+  
+  .message {
+    width: auto;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  #facebook-button {
+    color: white;
+    background-color: #1877F2;
+    border: #1877F2;
+    font-weight: bolder;
+  }
+
+  #facebook-icon {
+    padding-right: 0.5em;
+  }
+
+  .is-horizontal-center {
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  

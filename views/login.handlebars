@@ -1,0 +1,104 @@
+<!--Navbar-->
+<nav class="navbar is-info is-spaced" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <h1 class="is-size-1"> Gratitude Journal</h1>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-inverted is-info" id="signup-button">
+          <b>Signup</b>
+        </a>
+        <a class="button is-inverted is-info" id="login-button">
+          <b>Login</b>
+        </a>
+        <a href="/auth/facebook" class="button" id="facebook-button">
+         <img src='/assets/img/icon.png'id="facebook-icon"> Login with Facebook
+        </a>
+    </div>
+  </div>
+</nav>
+<p class="quote is-size-6"></p>
+<p class="quote-author has-text-weight-bold is-size-6"></p>
+<!--Main section-->
+<div class="tile is-ancestor">
+  <div class="tile is-parent ">
+    <article class="tile is-child box tile-background">
+      <p class="title has-text-centered">What you're sharing</p>
+      <article class="message">
+        {{#each results}}
+        <div class="message-body is-italic">{{description}}
+        </div>
+        {{/each}}
+      </article>
+    </article>
+  </div>
+  <div class="tile is-parent is-8">
+    <article class="tile is-child box main">
+      <h2 class="title is-2 has-text-centered has-text-weight-light">We can all get stuck thinking about the negatives
+        in life. Use this journal to focus on the positives.</h2>
+      <div class="content">
+      </div>
+    </article>
+  </div>
+</div>
+
+<!--Login modal-->
+<div class="modal login" id="login-modal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-background-white">
+    <h1 class="has-text-centered is-size-3"> Login</h1>
+    <div class="field ">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" id="email-input" type="email" placeholder="e.g. alexsmith@gmail.com" >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" id="password-input" type="password" placeholder="********">
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-info" id="login-form" type="submit">Login</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light cancel-button">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<!--Signup modal-->
+<div class="modal signup" id="signup">
+  <div class="modal-background"></div>
+  <div class="modal-content has-background-white">
+    <div class="container">
+      <h1 class="is-size-3 has-text-centered">Signup</h1>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" id="email-signup-input" placeholder="e.g. alexsmith@gmail.com">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" id="password-signup-input" placeholder="********">
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-info" type="submit" id="signup-form">Signup</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light cancel-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
