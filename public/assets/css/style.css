@@ -20,6 +20,11 @@
     background-color: hsl(204, 86%, 53%);
     padding: 0.5em;
   }
+
+  #footer-text {
+    color: white;
+  }
+  
   .quote {
     margin-top: 2em;
     text-align: center;
