@@ -31,7 +31,6 @@ $(document).ready(function () {
       password: password
     })
       .then(function (res) {
-        //console.log("received res:" + res)
         if  (res.id >= 0){
           window.location.replace("/newGratitude");
         }
@@ -44,7 +43,6 @@ $(document).ready(function () {
       .catch(handleLoginErr);
   }
   function handleLoginErr(err) {
-    //console.log(err.message);
     toastr.warning(err.message, {timeOut: 300});
   }
 });

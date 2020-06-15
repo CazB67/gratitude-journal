@@ -55,13 +55,12 @@ $(window).on('load',function () {
    //Return to main screen when logout button is clicked.
    $("#logout-button").click(function () {
       $.post("/api/logout")
-         .then(function (res) {
-         //   console.log("response to logout" + res);
+         .then(function () {
            window.location.replace("/");
            toastr.info('Logged out successfully', {timeOut:300})
          })
          .catch(function (err) {
-         //   console.log(err);
+           console.log(err);
            toastr.error('Error logging out!', {timeOut:300})
          });
    });
@@ -92,7 +91,6 @@ $(window).on('load',function () {
 
    const newToServer = (event) => {
       event.preventDefault();
-      console.log("newtoserver")
       edit = false;
       saveToserver(edit)
    };
@@ -197,9 +195,8 @@ $(window).on('load',function () {
 
          }
       }).catch(function (err) {
-         //console.log(err);
+         console.log(err);
          toastr.error('Error retrieving gratitudes', {timeOut:300})
       });
    }
 });
-
