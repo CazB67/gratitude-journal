@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const db = require("../models");
 const { Op } = require("sequelize");
 
@@ -92,7 +93,7 @@ exports.apiSignup = function (req, res, done) {
           res.json({ success: true, message: "That user is created, proceed to login!" }).redirect(307, "/api/login");
 
         })
-        .catch(function (err) {
+        .catch(function () {
           return done(null, false, { Message: "Error in db operation!" });
         });
 };
