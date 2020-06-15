@@ -18,7 +18,7 @@ $(window).on('load',function () {
       $(".quote-author").text("- " + data[i].author);
    }).fail(function (err) {
       console.log(err);
-      toastr.error('Error retrieving quotes API', {timeOut:300})
+      toastr.error('Error retrieving quotes API', {timeOut:200})
     });
    
    const updateTime = function () {
