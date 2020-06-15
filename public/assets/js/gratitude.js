@@ -174,7 +174,6 @@ $(window).on('load',function () {
          createdAt: createdAt
       }).then(function (res) {
          //No gratitudes saved on day (createdAt)
-         //console.log(res)
          if (res == null) {
             $("#search-action").text("No act of kindness written on this day");
             $("#search-gratitude").text("No gratitude written on this day");
