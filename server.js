@@ -12,8 +12,6 @@ const cookieParser = require('cookie-parser');
 const exphbs = require("express-handlebars");
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 8080;
-const compression = require('compression');
-app.use(compression());
 app.use(cookieParser());  
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
