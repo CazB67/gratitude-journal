@@ -13,7 +13,7 @@ To create a full stack application where users can log gratitudes, be presented 
 5. [Usage](#Usage)
 6. [Technologies](#Technologies)
 7. [Rough Breakdown of Tasks ](#Rough-Breakdown-of-Tasks)
-8. [Bonus Features ](#Bonus-Features)
+8. [Ideas For Future Development](#Ideas-For-Future-Development)
 9. [Credits](#Credits)
 10. [Contributing](#Contributing)
 11. [Licence](#License)
