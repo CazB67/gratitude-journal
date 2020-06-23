@@ -1,17 +1,17 @@
 /* eslint-disable no-undef */
 $(window).on('load',function () {
-   let data;
    let i = 0;
    //Ajax call to quotes API
    const settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes",
+      "url": "https://type.fit/api/quotes",
       "method": "GET"
    }
 
    $.ajax(settings).then(function (response) {
-      data = response
+      const data = JSON.parse(response);
+      console.log(data);
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
