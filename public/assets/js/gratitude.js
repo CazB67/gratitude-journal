@@ -16,7 +16,6 @@ $(window).on('load',function () {
       $(".quote").text(data[i].text);
       const authorArray = data[i].author.split(',');
       const author = authorArray.reduce((prev, cur) => {
-         console.log({prev, cur})
          if (cur.trim() !== 'type.fit') {
            prev.push(cur);
          } else prev.push('unknown')
@@ -134,9 +133,7 @@ $(window).on('load',function () {
          editFlag: gratitudeData.editFlag
       }).then(function () {
          window.location.replace("/viewGratitude");
-         //console.log(gratitudeData)
       }).catch(function (err) {
-         //console.log(err);
          toastr.warning(err.responseJSON.msg, {timeOut:300})
       });
    }
@@ -149,7 +146,6 @@ $(window).on('load',function () {
       $.get("/api/count", function(data){
         console.log(data);
       }).then(function (res) {
-         console.log({res})
          if (res === 1)  $(".plural").text('gratitude');
          else $(".plural").text('gratitudes');
          $(".count").text(res);
@@ -191,7 +187,6 @@ $(window).on('load',function () {
             $("#write-button-text").text("New Gratitude")
          //Brings up saved gratitude of a particular date
          } else {
-            console.log({res})
             $("#search-gratitude").text(res.description);
             $("#search-action").text(res.action);
             $("#checkbox").text(res.shareable);
