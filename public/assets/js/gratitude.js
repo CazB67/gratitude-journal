@@ -11,11 +11,18 @@ $(window).on('load',function () {
 
    $.ajax(settings).then(function (response) {
       const data = JSON.parse(response);
-      console.log(data);
       //Generate random quote from array
       i = Math.floor(Math.random() * (data.length - 0 + 1));
       $(".quote").text(data[i].text);
-      $(".quote-author").text("- " + data[i].author);
+      const authorArray = data[i].author.split(',');
+      const author = authorArray.reduce((prev, cur) => {
+         console.log({prev, cur})
+         if (cur.trim() !== 'type.fit') {
+           prev.push(cur);
+         } else prev.push('unknown')
+         return prev;
+       }, []);
+     $(".quote-author").text("- " + author[0]);
    }).fail(function (err) {
       console.log(err);
       toastr.error('Error retrieving quotes API', {timeOut:200})
@@ -96,14 +103,12 @@ $(window).on('load',function () {
    };
 
    function saveToserver(edit) {
-      //console.log(edit)
       let gratitudeData = {
          description: gratitudeInput.val().trim(),
          action: actionInput.val().trim(),
          shareable: shareGratitudes.prop("checked"),
          editFlag: edit
       };
-      //console.log(gratitudeData)
       if(gratitudeData.description === ""){
          toastr.warning("You need to add a gratitude", {timeOut:300})
          return;
@@ -144,6 +149,9 @@ $(window).on('load',function () {
       $.get("/api/count", function(data){
         console.log(data);
       }).then(function (res) {
+         console.log({res})
+         if (res === 1)  $(".plural").text('gratitude');
+         else $(".plural").text('gratitudes');
          $(".count").text(res);
       });
    }
@@ -181,10 +189,12 @@ $(window).on('load',function () {
             gratitudeFormEdit.addClass("is-hidden");
             gratitudeForm.removeClass("is-hidden");
             $("#write-button-text").text("New Gratitude")
-         //Brings up saved gratitude ofr particular date
+         //Brings up saved gratitude of a particular date
          } else {
+            console.log({res})
             $("#search-gratitude").text(res.description);
             $("#search-action").text(res.action);
+            $("#checkbox").text(res.shareable);
             $("#write-button-text").text("Edit Gratitude")
             gratitudeInput.text(res.description)
             actionInput.text(res.action)

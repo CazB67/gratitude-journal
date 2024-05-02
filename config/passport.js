@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const passport = require("passport");//passport frame work which is a milldeware framework that integrates with exp.js app and handles all 
 //authentication logic using specifc strategies we choose i.e. passport locat or passport JWT or passport-OAuth or passport-instgram.. allows developers to devlelop 
 //other middlewares/strategies for authentication

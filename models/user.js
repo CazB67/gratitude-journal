@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       unique: true,
     },
     facebookToken: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(500), // Change data type to TEXT
       allowNull: true,
       unique: true,
     },

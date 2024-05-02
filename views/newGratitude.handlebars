@@ -1,7 +1,7 @@
 <!--Navbar-->
     <nav class="navbar is-info is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <h1 class="is-size-1"> Gratitude Journal</h1>
+          <h1 class="is-size-1"> Gratitude Journal {{this.shareable}}</h1>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -124,7 +124,7 @@
                 <button class="button is-info" id="edit-button"><b>Edit</b></button>
                 <button class="button is-info" id="save-button"><b>Save</b></button>
                 <label class="checkbox is-pulled-right">
-                <input type="checkbox" id="checkbox">
+                <input type="checkbox" id="checkbox" checked={{shareable}}>
                 Share gratitude
                 </label>
             </div>
