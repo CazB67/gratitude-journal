@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/CazB67/project2#readme",
   "dependencies": {
+    "@vercel/postgres": "^0.8.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "bulma": "^0.8.2",
